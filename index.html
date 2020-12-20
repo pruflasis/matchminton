@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="icon" href="images/Favicon.ico" type="image/x-icon">
+
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: 'your-app-id',
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v9.0'
+            });
+        };
+    </script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/th_TH/sdk.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/styleme.css">
+
+    <title>MATCHMINTON</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="jumbotron jumbotron-fluid pt-2 mb-0" style="background-color: #000;">
+        <div class="container-fluid p-0">
+            <nav class="navbar navbar-expand-lg navbar-light bg-faded">
+                <button class="navbar-toggler btn-left bg-light float-left" type="button" data-toggle="collapse"
+                    data-target="#navbarMobile" aria-controls="navbarMobile" aria-expanded="false"
+                    aria-label="Toggle navigation" id="navbarToggler">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse nav-fill w-100 ml-3" id="navbarMobile">
+                    <div class="mx-auto headerLogo d-lg-none">
+                        <a href="index.html" class="float-right">
+                            <img src="images/LOGO_MATCHMINTON.png" alt="" class="w-100">
+                        </a>
+                    </div>
+
+                    <ul class="nav navbar-nav nav-fill w-100">
+                        <li class="nav-item">
+                            <a class="nav-link" href="match.html">MATCHING</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="buySale.html">SHOP</a>
+                        </li>
+                    </ul>
+
+                    <div class="mx-auto headerLogo d-none d-lg-block">
+                        <a href="index.html" class="float-right w-100x  ">
+                            <img src="images/LOGO_MATCHMINTON.png" alt="" class="w-100">
+                        </a>
+                    </div>
+
+                    <ul class="nav navbar-nav nav-fill w-100">
+                        <li class="nav-item">
+                            <a class="nav-link" href="webboard.html">COMMUNITY</a>
+                        </li>
+                        <!-- navbar ในส่วนที่ยังไม่ได้ login จะแสดง LOGIN  -->
+                        <li class="nav-item" id="not-login">
+                            <a class="nav-link" href="login.html">LOGIN</a>
+                        </li>
+                        <!-- navbar ในส่วนที่ login  ยินดีต้อนรับ คุณ<span id="user_name"></span>  -->
+                        <li class="nav-item" id="is-login">
+                            <div class="dropdown">
+                                <p class="dropdown-toggle mx-2" type="button" id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                    style="font-size: x-large; padding-top: 8px; font-weight: bold; color: #0AB2AC;">
+                                    ยินดีต้อนรับ <span id="user_name"></span>
+                                </p>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="Editprofile.html"><i class="fas fa-cog"></i>
+                                        แก้ไขโปรไฟล์</a>
+                                    <a class="dropdown-item" onclick="logout()" href="#"><i
+                                            class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
+                                    <a class="dropdown-item" href="createtheme.html"><i class="fas fa-scroll"></i>
+                                        ตั้งกระทู้</a>
+                                    <a class="dropdown-item" href="order.html"><i class="fas fa-shopping-cart"></i>
+                                        ตะกร้าสินค้า</a>
+                                    <hr>
+                                    <a class="dropdown-item" href="admin/admin_login.html"><i class="fas fa-user"></i>
+                                        Admin</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Banner -->
+    <div class="banner-img pt-2" style=" background-image: url(images/banner.PNG);">
+        <div class="text-light text-right p-4">
+            <h4 class="text-banner-top">MATCH LIVE. PLAY CATCH-UP. RELIVE THE DRAMA.</h4>
+            <h5 class="text-banner-small">
+                <font style="color: #0AB2AC;">THE OFFICIAL LIVE BADMINTON CHANNEL</font>
+            </h5>
+
+            <div class="fb-page" data-href="https://www.facebook.com/Matchminton-103418211633323" data-tabs="timeline"
+                data-width="" data-height="70px" data-small-header="true" data-adapt-container-width="true"
+                data-hide-cover="false" data-show-facepile="true">
+                <blockquote cite="https://www.facebook.com/Matchminton-103418211633323" class="fb-xfbml-parse-ignore"><a
+                        href="https://www.facebook.com/Matchminton-103418211633323">Matchminton</a></blockquote>
+            </div>
+            <!-- <button type="button" class="btn btn-danger">VIEW NOW &nbsp;<i class="fas fa-caret-right"></i></button> -->
+        </div>
+    </div>
+    <!--Banner -->
+    <!-- Navbar -->
+
+
+
+
+    <!-- Schedule -->
+    <div class="container">
+        <div class="my-5">
+            <h2>MATCH SCHEDULE</h2>
+            <h5>ตารางการแข้งขัน</h5>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="card p-2">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-center">
+                                <div class="circle float-left mx-3">
+                                    <img src="images/top10/01.jpg">
+                                </div>
+                                <div class="circle mx-3">
+                                    <img src="images/profile.png">
+                                </div>
+                            </div>
+                            <hr style="background-color: rgb(209, 44, 44); height: 2px;">
+                            <h5 class="card-title">Kento VS CHEN</h5>
+                            <p class="card-text"> World Tour Super 750 18 October 2020 14.00, Thailand</p>
+                            <a href="#" class="btn btn-outline-danger">MORE <i class="fas fa-play"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card p-2">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-center">
+                                <div class="circle float-left mx-3">
+                                    <img src="images/profile.png">
+                                </div>
+                                <div class="circle mx-3">
+                                    <img src="images/profile.png">
+                                </div>
+                            </div>
+                            <hr style="background-color: rgb(209, 44, 44); height: 2px;">
+                            <h5 class="card-title">Kento VS CHEN</h5>
+                            <p class="card-text"> World Tour Super 750 18 October 2020 14.00, Thailand</p>
+                            <a href="#" class="btn btn-outline-danger">MORE <i class="fas fa-play"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card p-2">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-center">
+                                <div class="circle float-left mx-3">
+                                    <img src="images/profile.png">
+                                </div>
+                                <div class="circle mx-3">
+                                    <img src="images/profile.png">
+                                </div>
+                            </div>
+                            <hr style="background-color: rgb(209, 44, 44); height: 2px;">
+                            <h5 class="card-title">Kento VS CHEN</h5>
+                            <p class="card-text"> World Tour Super 750 18 October 2020 14.00, Thailand</p>
+                            <a href="#" class="btn btn-outline-danger">MORE <i class="fas fa-play"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card p-2">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-center">
+                                <div class="circle float-left mx-3">
+                                    <img src="images/profile.png">
+                                </div>
+                                <div class="circle mx-3">
+                                    <img src="images/profile.png">
+                                </div>
+                            </div>
+                            <hr style="background-color: rgb(209, 44, 44); height: 2px;">
+                            <h5 class="card-title">Kento VS CHEN</h5>
+                            <p class="card-text"> World Tour Super 750 18 October 2020 14.00, Thailand</p>
+                            <a href="#" class="btn btn-outline-danger">MORE <i class="fas fa-play"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Schedule -->
+
+    <!-- Save Style -->
+    <div style="background-color: #000;" class="text-white p-4 is-login d-none">
+        <div class="container text-center">
+            <h3 class=" mt-4">คุณมีไม้ที่ถนัดหรือยัง ลองปรึกษากับเราดูไหม ?</h3>
+            <div class="row example-box">
+                <div class="col-sm-12 pt-4 pb-2" style="margin-bottom: 25px;">
+                    <!-- Default checked -->
+                    <div class="row justify-content-center">
+                        <div class="custom-control custom-radio col-md-3">
+                            <input type="radio" class="custom-control-input" id="showChecked" name="showHideTextbox"
+                                value="show">
+                            <label class="custom-control-label" for="showChecked">สนใจ</label>
+                        </div>
+                        <div class="custom-control custom-radio col-md-3">
+                            <input type="radio" class="custom-control-input" id="hideChecked" name="showHideTextbox"
+                                value="hide">
+                            <label class="custom-control-label" for="hideChecked">ไม่สนใจ</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="row justify-content-between" id="showDetailForYou">
+                        <div class="col-md-3">
+                            <div class="form-group row">
+                                <label for="flex" class=" col-form-label">เลือกความอ่อนของก้าน</label>
+                                <select class="custom-select" id="flex">
+                                    <option value="1">Stiff</option>
+                                    <option value="2">Medium</option>
+                                    <option value="3">Flexible</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group row">
+                                <label for="balance" class=" col-form-label">เลือกความสมดุลของไม้</label>
+                                <select class="custom-select" id="balance">
+                                    <option value="1">Head Heavy</option>
+                                    <option value="2">Even Balance</option>
+                                    <option value="3">Head Light</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group row">
+                                <label for="weight" class="col-form-label">เลือกน้ำหนักของไม้</label>
+                                <select class="custom-select" id="weight">
+                                    <option value="72.5">6U เป็นไม้ที่มีน้ำหนักเบา</option>
+                                    <option value="77.5">5U เป็นไม้ที่มีน้ำหนักค่อนข้างเบา</option>
+                                    <option value="82.5">4U เป็นไม้ที่มีน้ำหนักมาตราฐาน</option>
+                                    <option value="87.5">3U เป็นไม้ที่มีน้ำหนักค่อนข้างหนัก</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-outline-danger" onclick="save()">บันทึก</button>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center" id="showlink">
+                        <a class="btn btn-outline-danger" href="match.html">ทดสอบความเหมาะสมกับเรา</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Save Style -->
+
+    <!-- News -->
+    <div class="container">
+        <h2 class="mt-5">NEWS AND ACTIVITIES</h2>
+        <h5>ข่าวสารและกิจกรรม</h5>
+        <div id="new-activitie" class="carousel slide my-3" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#new-activitie" data-slide-to="0" class="active"></li>
+                <li data-target="#new-activitie" data-slide-to="1"></li>
+                <li data-target="#new-activitie" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="images/new1.png" class="d-block w-100" alt="...">
+                    <div class="caption-new d-none d-md-block">
+                        <h3>CHEN Yu Fei ชนะ TAI Tzu Ying <br> คว้าแชมป์ World Tour Finals
+                            พร้อมขึ้นเป็นมือหนึ่งโลก
+                        </h3>
+                        <button type="button" class="btn btn-danger">อ่านต่อ <i class="fas fa-play"></i></button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="images/new2.png" class="d-block w-100" alt="...">
+                    <div class="caption-new d-none d-md-block">
+                        <h3>CHEN Yu Fei ชนะ TAI Tzu Ying <br> คว้าแชมป์ World Tour Finals
+                            พร้อมขึ้นเป็นมือหนึ่งโลก
+                        </h3>
+                        <button type="button" class="btn btn-danger">อ่านต่อ <i class="fas fa-play"></i></button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="images/new3.png" class="d-block w-100" alt="...">
+                    <div class="caption-new d-none d-md-block">
+                        <h3>CHEN Yu Fei ชนะ TAI Tzu Ying <br> คว้าแชมป์ World Tour Finals
+                            พร้อมขึ้นเป็นมือหนึ่งโลก
+                        </h3>
+                        <button type="button" class="btn btn-danger">อ่านต่อ <i class="fas fa-play"></i></button>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#new-activitie" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#new-activitie" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+    <!-- News -->
+
+    <!-- Know -->
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-lg-8 my-3">
+                <h2>KNOWLEDGES</h2>
+                <h5>สาระและความรู้</h5>
+                <div class="row mt-4">
+                    <div class="img-kl1 col-md-12 " style="background-image: url(images/kl1.png);">
+                        <div class="caption-new d-md-block">
+                            <h5>การเล่นกีฬาแบดมินตัน <br>สามารถลดความเสี่ยงโรคหัวใจได้ถึง 56%</h5>
+                            <button type="button" class="btn btn-success" style="background-color: #0cb3ac;">อ่านต่อ
+                                <i class="fas fa-play"></i></button>
+                        </div>
+                    </div>
+                    <div class="img-kl2 col-md-7 " style="background-image: url(images/kl2.png);">
+                        <div class="caption-new d-md-block">
+                            <h5>ประวัติกีฬาแบดมินตัน</h5>
+                            <button type="button" class="btn btn-success" style="background-color: #0cb3ac;">อ่านต่อ
+                                <i class="fas fa-play"></i></button>
+                        </div>
+                    </div>
+                    <div class="img-kl3 col-md-5" style="background-image: url(images/kl3.png);">
+                        <div class="caption-new d-md-block">
+                            <h5>กฎกติกา <br>การเล่นแบดมินตัน</h5>
+                            <button type="button" class="btn btn-success" style="background-color: #0cb3ac;">อ่านต่อ
+                                <i class="fas fa-play"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Know -->
+
+            <!-- Topplayer -->
+            <div class="col my-3">
+                <h2>TOP PLAYER</h2>
+                <h5>จัดอันดับผู้เล่น</h5>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th scope="row">RANK 01</th>
+                            <td>
+                                <a href="https://bwfbadminton.com/player/89785/kento-momota" target="_blank">
+                                    <div class="circle" style="width: 40px; height: 40px; margin-top: 10px;">
+                                        <img src="images/top10/01.jpg">
+                                    </div>
+                                </a>
+                            </td>
+                            <td>
+                                <b>Kento MOMOTA</b>
+                                <p class="profile-player">WINS 337 AGE 26</p>
+                            </td>
+                            <td>
+                                <div class="country"
+                                    style="width: auto; height: 40px; overflow: hidden; margin-top: 15px;">
+                                    <img src="images/top10/japan.png" style="width: 100%;">
+                                </div>
+                                <a href="https://bwfbadminton.com/player/89785/kento-momota" target="_blank">View..
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr onclick="window.location.href = `https://bwfbadminton.com/player/34810/chou-tien-chen`"
+                            style="cursor: pointer;">
+                            <th scope="row">RANK 02</th>
+                            <td>
+                                <a href="https://bwfbadminton.com/player/34810/chou-tien-chen" target="_blank">
+                                    <div class="circle" style="width: 40px; height: 40px; margin-top: 10px;">
+                                        <img src="images/top10/02.jpg">
+                                    </div>
+                                </a>
+                            </td>
+                            <td>
+                                <div>
+                                    <b>CHOU <br>Tien Chen</b>
+                                    <p class="profile-player">WINS 397 AGE 30</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="country"
+                                    style="width: auto; height: 40px; overflow: hidden; margin-top: 15px;">
+                                    <img src="images/top10/chinesetaipei.png" style="width: 100%;">
+                                </div>
+                                <a href="https://bwfbadminton.com/player/34810/chou-tien-chen" target="_blank">View..
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr onclick="window.location.href = `https://bwfbadminton.com/player/91554/anders-antonsen`"
+                            style="cursor: pointer;">
+                            <th scope="row">RANK 03</th>
+                            <td>
+                                <a href="https://bwfbadminton.com/player/91554/anders-antonsen" target="_blank">
+                                    <div class="circle" style="width: 40px; height: 40px; margin-top: 10px;">
+                                        <img src="images/top10/03.jpg">
+                                    </div>
+                                </a>
+                            </td>
+                            <td class="profile-player">
+                                <div>
+                                    <b>Anders ANTONSEN</b>
+                                    <p class="profile-player">WINS 209 AGE 23</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="country"
+                                    style="width: auto; height: 40px; overflow: hidden; margin-top: 15px;">
+                                    <img src="images/top10/denmark.png" style="width: 100%;">
+                                </div>
+                                <a href="https://bwfbadminton.com/player/91554/anders-antonsen" target="_blank">View..
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">RANK 04</th>
+                            <td>
+                                <a href="https://bwfbadminton.com/player/25831/viktor-axelsen" target="_blank">
+                                    <div class="circle" style="width: 40px; height: 40px; margin-top: 10px;">
+                                        <img src="images/top10/04.jpg">
+                                    </div>
+                                </a>
+                            </td>
+                            <td class="profile-player">
+                                <div>
+                                    <b>Viktor AXELSEN</b>
+                                    <p class="profile-player">WINS 362 AGE 26</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="country"
+                                    style="width: auto; height: 40px; overflow: hidden; margin-top: 15px;">
+                                    <img src="images/top10/denmark.png" style="width: 100%;">
+                                </div>
+                                <a href="https://bwfbadminton.com/player/25831/viktor-axelsen" target="_blank">View..
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">RANK 05</th>
+                            <td>
+                                <a href="https://bwfbadminton.com/player/75787/chen-long" target="_blank">
+                                    <div class="circle" style="width: 40px; height: 40px; margin-top: 10px;">
+                                        <img src="images/top10/05.jpg">
+                                    </div>
+                                </a>
+                            </td>
+                            <td class="profile-player">
+                                <div>
+                                    <b>CHEN Long</b>
+                                    <p class="profile-player">WINS 441 AGE 31</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="country"
+                                    style="width: auto; height: 40px; overflow: hidden; margin-top: 15px;">
+                                    <img src="images/top10/china.png" style="width: 100%;">
+                                </div>
+                                <a href="https://bwfbadminton.com/player/75787/chen-long" target="_blank">View..
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Topplayer -->
+
+    <!-- Video -->
+    <div class="container-fluid" style="padding: 0; ">
+        <div class="bg-video p-5" style="background-image: url(images/bg-video.png);">
+            <div class="text ">
+                <h2>
+                    <font style="color: #0AB2AC;">FEATURED VIDEOS</font>
+                </h2>
+                <h5>
+                    <font style="color: #0AB2AC;">วิดิโอการแข่งขัน</font>
+                </h5>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-4 float-left text-light">
+                    <div class="card  my-0">
+                        <div class="card-body p-0">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <!-- form ในการโชว์วีดีโอ ใช้ iframe -->
+                                <iframe width="857" height="482" src="https://www.youtube.com/embed/mH0o5xkCG_E"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <h5 class="mt-3">MATCH HIGHLIGHTS :</h5>
+                    <p>CELCOM AXIATA Malaysia Open 2019</p>
+                    <p><i class="far fa-play-circle"></i> 3.23 min</p>
+                </div>
+                <div class="col-md-4 float-left text-light">
+                    <div class="card  my-0">
+                        <div class="card-body p-0">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe width="857" height="482" src="https://www.youtube.com/embed/OUD70rQf44M"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <h5 class="mt-3">MATCH HIGHLIGHTS :</h5>
+                    <p>CELCOM AXIATA Malaysia Open 2019</p>
+                    <p><i class="far fa-play-circle"></i> 3.23 min</p>
+                </div>
+
+                <div class="col-md-4 video-card">
+                    <div class="d-flex p-3 h-100 video-body">
+                        <h3>YONEX Freach Open 2020 Lee Chong Wei into Quarterfinals</h3>
+                        <a href="https://www.youtube.com/user/bwf" target="_blank" class="text-danger font-weight-bold">
+                            FULL VIDEO
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Video -->
+
+    <div class="hr-footer"></div>
+
+    <!-- footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <h3 class="footer-nav_title">Quick links</h3>
+                    <ul class="footer-nav_list list-unstyled">
+                        <li>
+                            <a href="index.html">Matchminton</a>
+                        </li>
+                        <li>
+                            <a href="match.html">Matching On You</a>
+                        </li>
+                        <li>
+                            <a href="buySale.html">Shop</a>
+                        </li>
+                        <li>
+                            <a href="webboard.html">Community</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="col-4">
+                    <h3 class="footer-nav_title">Social Media</h3>
+
+                    <ul class="footer-nav_list list-unstyled">
+                        <li><a href="https://www.facebook.com/bwfbadminton" target="_blank">facebook</a></li>
+                        <li><a href="https://twitter.com/bwfmedia" target="_blank">twitter</a></li>
+                        <li><a href="https://www.youtube.com/user/bwf" target="_blank">youtube</a></li>
+                    </ul>
+
+                </div>
+
+                <div class="clearfix visible-xs"></div>
+
+                <div class="col-4">
+                    <h3 class="footer-nav_title">Website links BWF</h3>
+
+                    <ul id="menu-website-links" class="footer-nav_list list-unstyled nav-link">
+                        <li id="menu-item-98"
+                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-98 fs-16px fw-400 text-gray navigation-section_menu_item_mobile ">
+                            <a href="https://corporate.bwfbadminton.com/">BWF CORPORATE</a>
+                        </li>
+                        <li id="menu-item-100"
+                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-100 fs-16px fw-400 text-gray navigation-section_menu_item_mobile ">
+                            <a target="_blank" rel="noopener noreferrer"
+                                href="http://badmintonworld.tv/">BADMINTONWORLD.TV</a>
+                        </li>
+                        <li id="menu-item-101"
+                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-101 fs-16px fw-400 text-gray navigation-section_menu_item_mobile ">
+                            <a href="https://bwfworldchampionships.bwfbadminton.com/">TOTAL BWF
+                                WORLDCHAMPIONSHIPS</a>
+                        </li>
+                        <li id="menu-item-104"
+                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-104 fs-16px fw-400 text-gray navigation-section_menu_item_mobile ">
+                            <a href="https://bwfsudirmancup.bwfbadminton.com/">TOTAL BWF SUDIRMAN CUP</a>
+                        </li>
+                        <li id="menu-item-103"
+                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-103 fs-16px fw-400 text-gray navigation-section_menu_item_mobile ">
+                            <a href="https://development.bwfbadminton.com/">DEVELOPMENT</a>
+                        </li>
+                        <li id="menu-item-102"
+                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-102 fs-16px fw-400 text-gray navigation-section_menu_item_mobile ">
+                            <a href="https://shuttletime.bwfbadminton.com/">SHUTTLE TIME</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="end-footer">
+                <div style="color: white; text-align: center;">
+                    <a href="#">
+                        TERMS &amp; CONDITIONS </a> &nbsp;|&nbsp;
+                    <a href="#">
+                        PRIVACY POLICY </a> &nbsp;|&nbsp;
+                    <a href="#">
+                        COOKIE POLICY </a>
+                </div>
+                <div class="copyright" style="text-align: center;">
+                    ©&nbsp;Copyright 2020 MATCHMINTON. All rights reserved.<a href="#">Terms &amp;
+                        Conditions.</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js "></script>
+
+    <script>
+        var user = JSON.parse(localStorage.getItem('user'));
+        if (user != null) {
+            $('#user_name').text(user.name)
+            $('#not-login').addClass('d-none')
+            $('#is-login').removeClass('d-none')
+            $('.is-login').removeClass('d-none')
+        } else {
+            $('#not-login').removeClass('d-none')
+            $('#is-login').addClass('d-none')
+            $('.is-login').addClass('d-none')
+        }
+
+        logout = () => {
+            localStorage.removeItem('user')
+            $('#not-login').removeClass('d-none')
+            $('#is-login').addClass('d-none')
+            $('.is-login').addClass('d-none')
+        }
+
+        $(document).ready(function () {
+            $('#showDetailForYou').hide();
+            $('#showlink').hide();
+
+            $('input[name="showHideTextbox"]').on('click', function () {
+                if ($(this).val() === 'show') {
+                    $('#showDetailForYou').show();
+                    $('#showlink').hide();
+                } else {
+                    $('#showDetailForYou').hide();
+                    $('#showlink').show();
+                }
+            });
+        });
+
+        save = () => {
+            if (!user) {
+                alert('โปรดเข้าสู่ระบบ');
+                return;
+            }
+
+            $.ajax({
+                method: 'POST',
+                url: 'service/member.php',
+                data: {
+                    action: 'update_style',
+                    flex: $('#flex option:selected').val(),
+                    balance: $('#balance option:selected').val(),
+                    weight: $('#weight option:selected').val(),
+                    user_id: user.user_id
+                },
+            }).done(function (msg) {
+                msg = JSON.parse(msg);
+                if (msg.code === 200) {
+                    alert('บันทึกเรียบร้อย')
+                        .done(function () {
+                            var tmp = {
+                                flex: flex,
+                                balance: balance,
+                                weight: weight
+                            }
+
+                            user = {
+                                ...user,
+                                ...tmp
+                            }
+                            localStorage.setItem('user', JSON.stringify(user));
+                        })
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>EDIT PRODUCT</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="top-nav mb-4" style=" height: 100px;">
+            <img src="../images/LOGO_MATCHMINTON.png" alt="" style="width: 35%; margin:0 auto; display: block;">
+        </div>
+        <div class="saleform">
+            <form method='post' enctype="multipart/form-data">
+                <div class="form-group row">
+                    <label for="name" class="col-md-6 col-form-label">ชื่อสินค้าที่คุณต้องการขาย</label>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="product_name" placeholder="ชื่อสินค้า เช่น Astrox 99">
+                        <p style="color: #707070;">ไม่ควรใส่อักชระพิเศษ เช่น ! * # > }</p>
+                    </div>
+                </div>
+                <div class="form-group row">
+
+                    <label for="type" class="col-md-6 col-form-label">เลือกหมวดหมู่สินค้า</label>
+                    <div class="col-md-6">
+                        <select class="custom-select" id="type" onchange="changeType(this)">
+                            <option selected disabled="true">เลือกหมวดหมู่</option>
+                            <option value="1">ไม้แบดมินตัน</option>
+                            <option value="2">รองเท้า</option>
+                            <option value="3">เสื้อกีฬา</option>
+                            <option value="4">กางเกงกีฬา</option>
+                            <option value="5">กระเป๋า</option>
+                            <option value="6">เอ็นแบดมินตัน</option>
+                            <option value="7">กริ๊ปพันด้าม</option>
+                          </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="brand_id" class="col-md-6 col-form-label">แบรนด์/ยี่ห้อ</label>
+                    <div class="col-md-6">
+                        <select class="custom-select" id="brand_id">
+                            <option selected>เลือกแบรนด์/ยี่ห้อ</option>
+                            <option value="1">Yonex</option>
+                            <option value="2">Lining</option>
+                            <option value="3">Victor</option>
+                            <option value="4">Apacs</option>
+                            <option value="5">Kumpoo</option>
+                            <option value="6">Gosen</option>
+                            <option value="7">Wilson</option>
+                            <option value="8">Protech</option>
+                            <option value="9">Adidas</option>
+                            <option value="10">Mizuno</option>
+                            <option value="11">อื่นๆ</option>
+                          </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="files" class="col-md-6 col-form-label">รูปสินค้า</label>
+                    <div class="col-md-6">
+                        <div class="wrapper" style="height: 150px;">
+                            <div class="drop">
+                                <div class="cont">
+                                    <i class="fas fa-file-image py-5"></i>
+                                </div>
+                                <output id="list"></output><input id="files" name="files[]" multiple="true" name="files[]" type="file" />
+                            </div>
+                        </div>
+                        <!-- <p>ใส่รูปได้สูงสุด 6 รูป</p> -->
+
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="price" class="col-md-6 col-form-label">ระบุราคา</label>
+                    <div class="col-md-6">
+                        <input type="number" class="form-control" id="price" placeholder="ราคา เช่น 9999">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="quantity" class="col-md-6 col-form-label">จำนวนสินค้าที่มี</label>
+                    <div class="col-md-6">
+                        <input type="number" class="form-control" id="quantity" placeholder="จำนวน เช่น 10,100">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="detail" class="col-md-6 col-form-label">รายละเอียดสินค้า</label>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="detail" placeholder="เช่น สภาพสินค้า สี อายุการใช้งาน ระยะประกัน">
+                    </div>
+                </div>
+                <div id="racket" class="d-none">
+                    <div class="form-group row">
+                        <label for="flex" class="col-md-6 col-form-label">Flex</label>
+                        <div class="col-md-6">
+                            <select class="custom-select" id="flex">
+                                    <option selected>เลือกความอ่อนของก้าน</option>
+                                    <option value="1">Stiff</option>
+                                    <option value="2">Medium</option>
+                                    <option value="3">Flexible</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="balance" class="col-md-6 col-form-label">Balance</label>
+                        <div class="col-md-6">
+                            <select class="custom-select" id="balance">
+                                <option selected>เลือกความสมดุลของไม้</option>
+                                <option value="1">Head Heavy</option>
+                                <option value="2">Even Balance</option>
+                                <option value="3">Head Light</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="weight" class="col-md-6 col-form-label">Weight</label>
+                        <div class="col-md-3">
+                            <label>Min</label>
+                            <input type="number " class="form-control " id="weight_min" placeholder="min" value="70">
+                        </div>
+                        <div class="col-md-3 ">
+                            <label>Max</label>
+                            <input type="number " class="form-control " id="weight_max" placeholder="max" value="90">
+                        </div>
+
+                    </div>
+                    <div class="form-group row">
+                        <label for="grip_size" class="col-md-6 col-form-label">Grip Size</label>
+                        <div class="col-md-6">
+                            <select class="custom-select" id="grip_size">
+                                <option selected> เลือกขนาดด้ามจับ</option>
+                                <option value="1">G3 (3.75 inches)</option>
+                                <option value="2">G4 (3.50 inches)</option>
+                                <option value="3">G5 (3.25 inches)</option>
+                                <option value="4">G6 (3.00 inches)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="level" class="col-md-6 col-form-label">Level</label>
+                        <div class="col-md-6">
+                            <select class="custom-select" id="level">
+                                <option selected>เลือกความเหมาะสมกับผู้เล่น</option>
+                                <option value="1">Beginner to Intermediate</option>
+                                <option value="2">Intermediate to Advanced</option>
+                                <option value="3">Advanced/Professional</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="tension" class="col-md-6 col-form-label">Max Tension</label>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label for="tension" class="col-md-6 col-form-label">ความตึงของเอ็นที่รองรับ &nbsp; ≤ </label>
+                                <div class="col-md-4">
+                                    <input type="email" class="form-control" id="tension">
+                                </div>
+                                <label for="tension" class="col-sm-2 col-form-label">   Ibs</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="ok py-5" style="text-align: center;">
+                    คลิกปุ่ม "ลงขาย" เพื่อยอมรับข้อ <a href="">กำหนดและเงื่อนไข</a>
+                </div> -->
+                <div class="ok py-5" style="text-align: center; ">
+                    <button type="button" class="btn btn-success mx-3">ยืนยัน</button>
+                    <button type="button" class="btn btn-secondary mx-3">ล้างข้อมูล</button>
+                </div>
+            </form>
+        </div>
+
+
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

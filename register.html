@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Register</title>
+</head>
+
+<body>
+
+    <div class="jumbotron jumbotron-fluid pt-2 mb-0" style="background-color: #fff;">
+        <div class="container-fluid p-0">
+            <nav class="navbar navbar-expand-lg navbar-light bg-faded">
+                <button class="navbar-toggler btn-left bg-light float-left" type="button" data-toggle="collapse"
+                    data-target="#navbarMobile" aria-controls="navbarMobile" aria-expanded="false"
+                    aria-label="Toggle navigation" id="navbarToggler">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse nav-fill w-100 ml-3" id="navbarMobile">
+                    <div class="mx-auto headerLogo d-lg-none">
+                        <a href="index.html" class="float-right">
+                            <img src="images/LOGO_MATCHMINTON.png" alt="" class="w-100">
+                        </a>
+                    </div>
+
+                    <ul class="nav navbar-nav nav-fill w-100">
+                        <li class="nav-item">
+                            <a class="nav-link" href="match.html">MATCHING</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="buySale.html">SHOP</a>
+                        </li>
+                    </ul>
+
+                    <div class="mx-auto headerLogo d-none d-lg-block">
+                        <a href="index.html" class="float-right w-100x  ">
+                            <img src="images/LOGO_MATCHMINTON.png" alt="" class="w-100">
+                        </a>
+                    </div>
+
+                    <ul class="nav navbar-nav nav-fill w-100">
+                        <li class="nav-item">
+                            <a class="nav-link" href="webboard.html">COMMUNITY</a>
+                        </li>
+                        <!-- navbar ในส่วนที่ยังไม่ได้ login จะแสดง LOGIN  -->
+                        <li class="nav-item" id="not-login">
+                            <a class="nav-link" href="login.html">LOGIN</a>
+                        </li>
+                        <!-- navbar ในส่วนที่ login  ยินดีต้อนรับ คุณ<span id="user_name"></span>  -->
+                        <li class="nav-item" id="is-login">
+                            <div class="dropdown">
+                                <p class="dropdown-toggle mx-2" type="button" id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                    style="font-size: x-large; padding-top: 8px; font-weight: bold; color: #0AB2AC;">
+                                    ยินดีต้อนรับ คุณ<span id="user_name"></span>
+                                </p>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="Editprofile.html"><i class="fas fa-cog"></i>
+                                        แก้ไขโปรไฟล์</a>
+                                    <a class="dropdown-item" onclick="logout()" href="#"><i
+                                            class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
+                                    <a class="dropdown-item" href="createtheme.html"><i class="fas fa-scroll"></i>
+                                        ตั้งกระทู้</a>
+                                    <a class="dropdown-item" href="order.html"><i class="fas fa-shopping-cart"></i>
+                                        ตะกร้าสินค้า</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+
+
+    <div class="bg-editprofile">
+        <section>
+            <div class="row justify-content-center">
+                <div class="col-md-7 col-lg-5 pt-5 text-center" style="background-color: #fff; border-radius: 16px;">
+                    <h2>MATCHMINTON</h1>
+                        <p>ยินดีต้อนรับเข้าสู่ครอบครัว กรุณาสมัครสมาชิก</p>
+
+                        <form class="text-left">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <fieldset class="material mb-3">
+                                        <input type="text" id="name" placeholder="John" autocomplete="off" required>
+                                        <hr>
+                                        <label>ชื่อ</label>
+                                    </fieldset>
+                                </div>
+                                <div class="col">
+                                    <fieldset class="material mb-3">
+                                        <input type="text" id="surname" placeholder="Doe" autocomplete="off" required>
+                                        <hr>
+                                        <label>นามสกุล</label>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <fieldset class="material mb-3">
+                                <input type="text" id="username" autocomplete="off" required>
+                                <hr>
+                                <label>ชื่อผู้ใช้งาน</label>
+                            </fieldset>
+                            <fieldset class="material mb-3">
+                                <input type="email" id="email" autocomplete="off" required>
+                                <hr>
+                                <label>อีเมล</label>
+                            </fieldset>
+                            <fieldset class="material mb-3">
+                                <input type="password" id="password" autocomplete="off" required>
+                                <hr>
+                                <label>รหัสผ่าน</label>
+                            </fieldset>
+                            <fieldset class="material mb-3">
+                                <input type="password" id="password2" autocomplete="off" required>
+                                <hr>
+                                <label>ยืนยันรหัสผ่าน</label>
+                            </fieldset>
+                            <div class="form-check px-5">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">ยอมรับเงื่อนไขและกฏระเบียบ</label>
+                            </div>
+
+                            <div class="form-label">
+                                <!-- <div class="d-flex justify-content-between mt-5"> -->
+                                <button type="button" class="btn btn-secondary" onclick="signUp(this)"
+                                    style="background-color: #43425D;">สมัครสมาชิก</button>
+                            </div>
+                            <div class="form-label">
+                                <a href="login.html" style="color: #43425D; ">ถ้าคุณเป็นสมาชิกแล้ว เข้าสู่ระบบ</a>
+                            </div>
+                        </form>
+                        <p class="pt-4">Term of use. Privacy policy</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+
+        var user = JSON.parse(localStorage.getItem('user'));
+        if (user != null) {
+            $('#user_name').text(user.name)
+            $('#not-login').addClass('d-none')
+            $('#is-login').removeClass('d-none')
+            $('.is-login').removeClass('d-none')
+        } else {
+            $('#not-login').removeClass('d-none')
+            $('#is-login').addClass('d-none')
+            $('.is-login').addClass('d-none')
+        }
+        const signUp = (e) => {
+            e.disabled = true;
+
+            if (!$('#exampleCheck1').prop("checked")) {
+                alert('Please check.')
+                e.disabled = false;
+                return;
+            }
+            if ($('#password').val() !== $('#password2').val()) {
+                alert('Password not match')
+                e.disabled = false;
+                return;
+            }
+
+            $.ajax({
+                method: "POST",
+                url: "service/member.php",
+                data: {
+                    action: 'register',
+                    username: $('#username').val(),
+                    password: $('#password').val(),
+                    name: $('#name').val(),
+                    surname: $('#surname').val(),
+                    email: $('#email').val()
+                }
+            }).done(function (msg) {
+                console.log(msg)
+                msg = JSON.parse(msg)
+                if (msg.code === 200) {
+                    window.location.href = "login.html";
+                }
+            });
+            e.disabled = false;
+        }
+    </script>
+</body>
+
+</html>

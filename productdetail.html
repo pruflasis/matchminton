@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/knowledge.css">
+    <title>PRODUCT DETAIL</title>
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid pt-4 mb-0" style="background-color: #fff;">
+        <div class="container-fluid p-0">
+            <nav class="navbar navbar-expand-lg navbar-light bg-faded">
+                <button class="navbar-toggler btn-left bg-light float-left" type="button" data-toggle="collapse" data-target="#navbarMobile" aria-controls="navbarMobile" aria-expanded="false" aria-label="Toggle navigation" id="navbarToggler">
+              <span class="navbar-toggler-icon"></span>
+                    </button>
+                <div class="collapse navbar-collapse nav-fill w-100 ml-3" id="navbarMobile">
+                    <div class="mx-auto headerLogo d-lg-none">
+                        <a href="index.html" class="float-right w-100x  ">
+                            <img src="images/LOGO_MATCHMINTON.png" alt="" class="w-100">
+                        </a>
+                    </div>
+                    <!-- <div class="collapse "> -->
+                    <ul class="nav navbar-nav nav-fill w-100">
+                        <li class="nav-item">
+                            <a class="nav-link" href="match.html">MATCHING</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="buySale.html">SHOP</a>
+                        </li>
+                    </ul>
+                    <!-- </div> -->
+
+                    <div class="mx-auto headerLogo d-none d-lg-block">
+                        <a href="index.html" class="float-right w-100x  ">
+                            <img src="images/LOGO_MATCHMINTON.png" alt="" class="w-100">
+                        </a>
+                    </div>
+
+                    <!-- <div class="collapse navbar-collapse nav-fill w-100"> -->
+
+                    <ul class="nav navbar-nav nav-fill w-100">
+                        <li class="nav-item">
+                            <a class="nav-link" href="webboard.html">COMMUNITY</a>
+                        </li>
+                        <!-- navbar ในส่วนที่ยังไม่ได้ login จะแสดง LOGIN  -->
+                        <li class="nav-item" id="not-login">
+                            <a class="nav-link" href="login.html">LOGIN</a>
+                        </li>
+                        <!-- </ul> 
+                         <ul class="navbar-nav px-0"> 
+                         <li class="nav-item">
+                            <a href="createtheme.html"><button type="button" class="btn btn-info mx-2" data-toggle="modal" data-target="#exampleModal">ตั้งกระทู้</button></a>
+                        </li> 
+                         <li class="nav-item">
+                            &nbsp;<a href="order.html"><i class="fas fa-shopping-cart"></i></a>
+                        </li> -->
+                        <!-- navbar ในส่วนที่ login  ยินดีต้อนรับ คุณ<span id="user_name"></span>  -->
+                        <li class="nav-item" id="is-login">
+                            <div class="dropdown">
+                                <p class="dropdown-toggle mx-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: x-large; padding-top: 8px; font-weight: bold; color: #0AB2AC;">
+                                    ยินดีต้อนรับ คุณ<span id="user_name"></span>
+                                </p>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="Editprofile.html"><i class="fas fa-cog"></i> แก้ไขโปรไฟล์</a>
+                                    <a class="dropdown-item" onclick="logout()" href="#"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
+                                    <a class="dropdown-item" href="createtheme.html"><i class="fas fa-scroll"></i> ตั้งกระทู้</a>
+                                    <a class="dropdown-item" href="order.html"><i class="fas fa-shopping-cart"></i> ตะกร้าสินค้า</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row my-3">
+            <div class="col">
+                <!-- <div style="width: auto; height: 300px; background-color: #888888;"></div> -->
+            </div>
+            <div class="col-9" id="product_detail">
+                <!-- <h2 class="float-left">สินค้าใหม่</h2>
+                <h2 class="float-right">ไม้แบดมินตัน Yonex ASTROX 99 </h2><br><br>
+
+                <div id="carouselExampleControls" class="carousel slide mb-5" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active w-100">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="images/AX99YX-SSHIO-C.png" class="d-block w-100 float-left" alt="...">
+                                </div>
+                                <div class="col">
+                                    <img src="images/AX99YX-SSHIO-D.png" class="d-block w-100 float-left" alt="...">
+                                </div>
+                                <div class="col">
+                                    <img src="images/AX99YX-SSHIO-E.png" class="d-block w-100 float-left" alt="...">
+                                </div>
+                                <div class="col">
+                                    <img src="images/AX99YX-SSHIO-I.png" class="d-block w-100 float-left" alt="...">
+                                </div>
+                                <div class="col">
+                                    <img src="images/AX99YX-SSHIO-K.png" class="d-block w-100 float-left" alt="...">
+                                </div>
+                                <div class="col">
+                                    <img src="images/AX99YX-SSHIO-L.png" class="d-block w-100 float-left" alt="...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <img src="images/AX99YX-SSHIO-A1.png" alt="">
+                    </div>
+                    <div class="col text-right">
+                        <p class="text-muted">฿7,790.00</p>
+                        <h5 class="font-weight-bold" style="color: #FF6565;">฿5,295.00</h5>
+                        <p>ประหยัดทันที่ ฿2,495.00 (32%)</p>
+                        <div class="text-center">
+                            <p>จำนวนที่ต้องการ</p>
+                            <button type="button" class="btn btn-outline-primary mb-2">3U (85.0 - 89.9 g)</button>
+                            <button type="button" class="btn btn-outline-primary mb-2">4U (80.0 - 84.9 g)</button>
+
+                            <div class="input-group my-3">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-outline-secondary" type="button" id="button-addon1" style="background-color: #EF6E6E;"><i class="far fa-minus-square"></i></button>
+                                </div>
+                                <input type="text" class="form-control text-center" placeholder="1" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" id="button-addon2" style="background-color: #82E37F;"><i class="far fa-plus-square"></i></button>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-primary my-3"><i class="fas fa-shopping-cart"></i> ใส่ในรถเข็น</button>
+                            <h5>ขายโดย MATCHMINTON</h5>
+                            <p>ติตต่อ Tel. 08XXXXXXX Line @matchminton </p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="tablink" onclick="openPage('Home', this, '#888888')" id="defaultOpen">รายละเอียด</button>
+                <button class="tablink" onclick="openPage('News', this, '#888888')">เทคโนโลยี</button>
+                <button class="tablink" onclick="openPage('Contact', this, '#888888')">Tab3</button>
+
+                <div id="Home" class="tabcontent">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th scope="row">Level :</th>
+                                <td>Advance / Professional</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Type :</th>
+                                <td>Offensive/Fast</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Flex :</th>
+                                <td>Stiff</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Frame :</th>
+                                <td>H.M. GRAPHITE/Namd/NANOMETRIC/Tungsten</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Shaft :</th>
+                                <td>H.M. Graphite/Namd</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Head :</th>
+                                <td>Square/Isometric</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Weight / Grip Size :</th>
+                                <td>4U (Ave.83g) G5 , 3U (Ave.88g) G5</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Stringing Advice :</th>
+                                <td>3U 21-29lbs , 4U 20-28lbs</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Colour :</th>
+                                <td>Sunshine Orange</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">B.Pt :</th>
+                                <td>Head Heavy Balance</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Made in :</th>
+                                <td>N/A</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="mt-3 font-weight-bold">ข้อมูลอื่นๆ</p>
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+                    no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
+                    et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                </div>
+                <div id="News" class="tabcontent">
+                    <h3>News</h3>
+                    <p>Some news this fine day!</p>
+                </div>
+
+                <div id="Contact" class="tabcontent">
+                    <h3>Contact</h3>
+                    <p>Get in touch, or swing by for a cup of coffee.</p>
+                </div>
+-->
+
+            </div>
+            <div class="col">
+                <!-- <div style="width: auto; height: 300px; background-color: #888888;"></div> -->
+            </div>
+        </div>
+
+    </div>
+
+
+    </div>
+    <!-- container -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        var user = JSON.parse(localStorage.getItem('user'));
+        console.log(user)
+        if (user != null) {
+            $('#user_name').text(user.name)
+            $('#not-login').addClass('d-none')
+            $('#is-login').removeClass('d-none')
+        } else {
+            $('#not-login').removeClass('d-none')
+            $('#is-login').addClass('d-none')
+        }
+
+        logout = () => {
+            localStorage.removeItem('user')
+            $('#not-login').removeClass('d-none')
+            $('#is-login').addClass('d-none')
+        }
+    </script>
+    <script>
+        function openPage(pageName, elmnt, color) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].style.backgroundColor = "";
+            }
+            document.getElementById(pageName).style.display = "block";
+            elmnt.style.backgroundColor = color;
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        // document.getElementById("defaultOpen").click();
+
+        function getUrlVars() {
+            var vars = [],
+                hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
+        $().ready(() => {
+            $.ajax({
+                method: "POST",
+                url: "service/product.php",
+                data: {
+                    action: 'get_product_detail',
+                    product_id: getUrlVars()["id"]
+
+                },
+            }).done(function(msg) {
+                msg = JSON.parse(msg)
+                console.log(msg)
+                if (msg.code === 200) {
+                    var res = msg.result;
+                    let image = res.product_images.find((item) => res.product.product_id == item.fk_product_id);
+                    $("#product_detail").append(product_detail(msg.result.product, image));
+                    return;
+                }
+
+                // $('#summernote').summernote('code', msg.result.content);
+
+            });
+        })
+        product_detail = (item, image) => {
+            console.log(item);
+            var img = image ? 'service/' + image.path : 'https://via.placeholder.com/150';
+            if (item.level == '1') {
+                item.level = "Beginner to Intermediate";
+            } else if (item.level == '2') {
+                item.level = "Intermediate to Advanced";
+            } else {
+                item.level = "Advanced/Professional";
+            }
+
+            if (item.flex == '1') {
+                item.flex = "Stiff";
+            } else if (item.flex == '2') {
+                item.flex = "Medium";
+            } else {
+                item.flex = "Flexible";
+            }
+
+            if (item.grip_size == '1') {
+                item.grip_size = "G3 (3.75 inches)";
+            } else if (item.grip_size == '2') {
+                item.grip_size = "G4 (3.50 inches)";
+            } else if (item.grip_size == '3') {
+                item.grip_size = "G5 (3.25 inches)";
+            } else {
+                item.grip_size = "G6 (3.00 inches)";
+            }
+
+            if (item.balance == '1') {
+                item.balance = "Head Heavy";
+            } else if (item.balance == '2') {
+                item.balance = "Even Balance";
+            } else {
+                item.balance = "Head Light";
+            }
+            return `
+            <h2 class="float-left">สินค้าใหม่</h2>
+                <h2 class="float-right">${item.product_name}</h2><br><br>
+
+                <div id="carouselExampleControls" class="carousel slide mb-5" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active w-100">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="images/AX99YX-SSHIO-C.png" class="d-block w-100 float-left" alt="...">
+                                </div>
+                                <div class="col">
+                                    <img src="images/AX99YX-SSHIO-D.png" class="d-block w-100 float-left" alt="...">
+                                </div>
+                                <div class="col">
+                                    <img src="images/AX99YX-SSHIO-E.png" class="d-block w-100 float-left" alt="...">
+                                </div>
+                                <div class="col">
+                                    <img src="images/AX99YX-SSHIO-I.png" class="d-block w-100 float-left" alt="...">
+                                </div>
+                                <div class="col">
+                                    <img src="images/AX99YX-SSHIO-K.png" class="d-block w-100 float-left" alt="...">
+                                </div>
+                                <div class="col">
+                                    <img src="images/AX99YX-SSHIO-L.png" class="d-block w-100 float-left" alt="...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <img src="${img}" alt="">
+                    </div>
+                    <div class="col text-right">
+                        <p class="text-muted">${item.price}</p>
+                        <h5 class="font-weight-bold" style="color: #FF6565;">฿5,295.00</h5>
+                        <p>ประหยัดทันที่ ฿2,495.00 (32%)</p>
+                        <div class="text-center">
+                            <p>จำนวนที่ต้องการ</p>
+                            <button type="button" class="btn btn-outline-primary mb-2">3U (85.0 - 89.9 g)</button>
+                            <button type="button" class="btn btn-outline-primary mb-2">4U (80.0 - 84.9 g)</button>
+
+                            <div class="input-group my-3">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-outline-secondary" type="button" id="button-addon1" style="background-color: #EF6E6E;"><i class="far fa-minus-square"></i></button>
+                                </div>
+                                <input type="number" class="form-control text-center" placeholder="1" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" id="button-addon2" style="background-color: #82E37F;"><i class="far fa-plus-square"></i></button>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-primary my-3"><i class="fas fa-shopping-cart"></i> ใส่ในรถเข็น</button>
+                            <h5>ขายโดย MATCHMINTON</h5>
+                            <p>ติตต่อ Tel. 08XXXXXXX Line @matchminton </p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="tablink" onclick="openPage('Home', this, '#888888')" id="defaultOpen">รายละเอียด</button>
+                <button class="tablink" onclick="openPage('News', this, '#888888')">เทคโนโลยี</button>
+                <button class="tablink" onclick="openPage('Contact', this, '#888888')">Tab3</button>
+
+                <div id="Home" class="tabcontent">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th scope="row">Level :</th>
+                                <td>${item.level}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Type :</th>
+                                <td>Offensive/Fast</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Flex :</th>
+                                <td>${item.flex}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Frame :</th>
+                                <td>H.M. GRAPHITE/Namd/NANOMETRIC/Tungsten</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Shaft :</th>
+                                <td>H.M. Graphite/Namd</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Head :</th>
+                                <td>Square/Isometric</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Weight / Grip Size :</th>
+                                <td>${item.grip_size}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Stringing Advice :</th>
+                                <td>3U 21-29lbs , 4U 20-28lbs</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Colour :</th>
+                                <td>Sunshine Orange</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">B.Pt :</th>
+                                <td>${item.balance}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Made in :</th>
+                                <td>N/A</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                     <p class="mt-3 font-weight-bold">ข้อมูลอื่นๆ</p>
+                <p>${item.description}</p>
+                </div>
+                <div id="News" class="tabcontent">
+                    <h3>News</h3>
+                    <p>Some news this fine day!</p>
+                </div>
+
+                <div id="Contact" class="tabcontent">
+                    <h3>Contact</h3>
+                    <p>Get in touch, or swing by for a cup of coffee.</p>
+                </div>
+               
+            `
+        }
+    </script>
+
+</body>
+
+</html>

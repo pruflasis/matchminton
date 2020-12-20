@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/knowledge.css">
+    <!-- <link rel="stylesheet" href="css/other.css"> -->
+
+
+
+    <title>Web Board</title>
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid pt-4 mb-0" style="background-color: #fff;">
+        <div class="container-fluid p-0">
+            <nav class="navbar navbar-expand-lg navbar-light bg-faded">
+                <button class="navbar-toggler btn-left bg-light float-left" type="button" data-toggle="collapse" data-target="#navbarMobile" aria-controls="navbarMobile" aria-expanded="false" aria-label="Toggle navigation" id="navbarToggler">
+              <span class="navbar-toggler-icon"></span>
+                    </button>
+                <div class="collapse navbar-collapse nav-fill w-100 ml-3" id="navbarMobile">
+                    <div class="mx-auto headerLogo d-lg-none">
+                        <a href="index.html" class="float-right w-100x  ">
+                            <img src="images/LOGO_MATCHMINTON.png" alt="" class="w-100">
+                        </a>
+                    </div>
+                    <!-- <div class="collapse "> -->
+                    <ul class="nav navbar-nav nav-fill w-100">
+                        <li class="nav-item">
+                            <a class="nav-link" href="match.html">MATCHING</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="buySale.html">SHOP</a>
+                        </li>
+                    </ul>
+                    <!-- </div> -->
+
+                    <div class="mx-auto headerLogo d-none d-lg-block">
+                        <a href="index.html" class="float-right w-100x  ">
+                            <img src="images/LOGO_MATCHMINTON.png" alt="" class="w-100">
+                        </a>
+                    </div>
+
+                    <!-- <div class="collapse navbar-collapse nav-fill w-100"> -->
+
+                    <ul class="nav navbar-nav nav-fill w-100">
+                        <li class="nav-item">
+                            <a class="nav-link" href="webboard.html">COMMUNITY</a>
+                        </li>
+                        <!-- navbar ในส่วนที่ยังไม่ได้ login จะแสดง LOGIN  -->
+                        <li class="nav-item" id="not-login">
+                            <a class="nav-link" href="login.html">LOGIN</a>
+                        </li>
+                        <!-- </ul> 
+                         <ul class="navbar-nav px-0"> 
+                         <li class="nav-item">
+                            <a href="createtheme.html"><button type="button" class="btn btn-info mx-2" data-toggle="modal" data-target="#exampleModal">ตั้งกระทู้</button></a>
+                        </li> 
+                         <li class="nav-item">
+                            &nbsp;<a href="order.html"><i class="fas fa-shopping-cart"></i></a>
+                        </li> -->
+                        <!-- navbar ในส่วนที่ login  ยินดีต้อนรับ คุณ<span id="user_name"></span>  -->
+                        <li class="nav-item" id="is-login">
+                            <div class="dropdown">
+                                <p class="dropdown-toggle mx-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: x-large; padding-top: 8px; font-weight: bold; color: #0AB2AC;">
+                                    ยินดีต้อนรับ คุณ<span id="user_name"></span>
+                                </p>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="Editprofile.html"><i class="fas fa-cog"></i> แก้ไขโปรไฟล์</a>
+                                    <a class="dropdown-item" onclick="logout()" href="#"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
+                                    <a class="dropdown-item" href="createtheme.html"><i class="fas fa-scroll"></i> ตั้งกระทู้</a>
+                                    <a class="dropdown-item" href="order.html"><i class="fas fa-shopping-cart"></i> ตะกร้าสินค้า</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div style="background-color: #0CB3AC; width: 100%; height: 38px;">
+        <div class="container">
+            <div class="col-md-3 float-left p-2"><i class="fas fa-chalkboard"></i> หน้าแรก</div>
+            <div class="input-group col-md-4 mb-3 float-right">
+                <input type="text" class="form-control" placeholder="ค้นหา" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2" style="background-color: #000;"><i class="fas fa-search" style="color: #fff;"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card">
+            <h5 class="card-header" style="background-color: #0CB3AC;color: #fff;">เลือกห้อง</h5>
+            <div class="card-body" style="border: solid 1px #0CB3AC;">
+                <div class="row justify-content-md-center">
+                    <a href="" class="taga">
+                        <img src="images/question.svg" alt="" width="100%">
+                        <p class="text-center text-dark">ถาม-ตอบ</p>
+                    </a>
+                    <a href="" class="taga">
+                        <img src="images/sell.svg" alt="" width="100%">
+                        <p class="text-center text-dark">ซื้อ-ขาย</p>
+                    </a>
+                    <a href="" class="taga">
+                        <img src="images/badminton-court.svg" alt="" width="100%">
+                        <p class="text-center text-dark">สนามแบด</p>
+                    </a>
+                    <a href="" class="taga">
+                        <img src="images/tournament.svg" alt="" width="100%">
+                        <p class="text-center text-dark">การแข่งขัน</p>
+                    </a>
+                    <a href="" class="taga">
+                        <img src="images/racket.svg" alt="" width="100%">
+                        <p class="text-center text-dark">ไม้แบด</p>
+                    </a>
+                    <a href="" class="taga">
+                        <img src="images/knowledge.svg" alt="" width="100%">
+                        <p class="text-center text-dark">ความรู้</p>
+                    </a>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 class="card-header p-3" style="background-color: #0CB3AC; color: #34495E;"><b>Highline</b></h3>
+            <div class="card-body" style="border: solid 1px #0CB3AC;">
+                <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-interval="10000">
+                            <div class="row px-5">
+                                <div class="card-group">
+                                    <div class="card m-2">
+                                        <img src="images/news2.PNG" class="card-img-top w-100 h-50" alt="...">
+                                        <div class="card-body">
+                                            <p class="card-text">รีวิวไม้แบดมินตัน Yonex Nanoflare 700 ราคา 5,025ของพร้อมส่ง</p>
+                                        </div>
+                                    </div>
+                                    <div class="card m-2">
+                                        <img src="images/news3.PNG" class="card-img-top w-100 h-50" alt="...">
+                                        <div class="card-body">
+                                            <p class="card-text">รีวิวไม้แบดมินตัน Yonex Nanoflare 700 ราคา 5,025ของพร้อมส่ง</p>
+                                        </div>
+                                    </div>
+                                    <div class="card m-2">
+                                        <img src="images/news1.PNG" class="card-img-top w-100 h-50" alt="...">
+                                        <div class="card-body">
+                                            <p class="card-text">รีวิวไม้แบดมินตัน Yonex Nanoflare 700 ราคา 5,025ของพร้อมส่ง</p>
+                                        </div>
+                                    </div>
+                                    <div class="card m-2">
+                                        <img src="images/news4.png" class="card-img-top w-100 h-50" alt="...">
+                                        <div class="card-body">
+                                            <p class="card-text">รีวิวไม้แบดมินตัน Yonex Nanoflare 700 ราคา 5,025ของพร้อมส่ง</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item" data-interval="2000">
+                            <div class="row px-5">
+                                <div class="card-group">
+                                    <div class="card m-2">
+                                        <img src="images/news2.PNG" class="card-img-top w-100 h-50" alt="...">
+                                        <div class="card-body">
+                                            <p class="card-text">รีวิวไม้แบดมินตัน Yonex Nanoflare 700 ราคา 5,025ของพร้อมส่ง</p>
+                                        </div>
+                                    </div>
+                                    <div class="card m-2">
+                                        <img src="images/news3.PNG" class="card-img-top w-100 h-50" alt="...">
+                                        <div class="card-body">
+                                            <p class="card-text">รีวิวไม้แบดมินตัน Yonex Nanoflare 700 ราคา 5,025ของพร้อมส่ง</p>
+                                        </div>
+                                    </div>
+                                    <div class="card m-2">
+                                        <img src="images/news1.PNG" class="card-img-top w-100 h-50" alt="...">
+                                        <div class="card-body">
+                                            <p class="card-text">รีวิวไม้แบดมินตัน Yonex Nanoflare 700 ราคา 5,025ของพร้อมส่ง</p>
+                                        </div>
+                                    </div>
+                                    <div class="card m-2">
+                                        <img src="images/news4.png" class="card-img-top w-100 h-50" alt="...">
+                                        <div class="card-body">
+                                            <p class="card-text">รีวิวไม้แบดมินตัน Yonex Nanoflare 700 ราคา 5,025ของพร้อมส่ง</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev btn-info" style="width: 3%;" href="#carouselExampleInterval" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next btn-info" style="width: 3%;" href="#carouselExampleInterval" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 class="card-header p-3" style="background-color: #0CB3AC; color: #34495E;"><b>Realtime</b>
+                <p class="m-0" style="font-size: small; color: #fff;">กระทู้ที่มีคนเปิดอ่านมากในขณะนี้ อัปเดตตลอดเวลา</p>
+            </h3>
+            <div class="card-body" style="border: solid 1px #0CB3AC;">
+                <div class="row" id="realtime">
+
+                </div>
+            </div>
+            <button type="button" class="btn btn-info form-control" style="background-color: #34495E;">ดูเพิ่มเติม</button>
+        </div>
+
+        <div class="card">
+            <h5 class="card-header" style="background-color: #34495E; text-align: center;">
+                <img src="images/vt.png" alt="" class="w-100">
+            </h5>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <h3 class="card-header p-3" style="background-color: #0CB3AC; color: #34495E;"><b>Matchminton Pick</b>
+                        <p class="m-0" style="font-size: small; color: #fff;">กระทู้คุณภาพคัดเลือกโดยทีมงาน</p>
+                    </h3>
+                    <div class="card-body" style="border: solid 1px #0CB3AC;">
+                        <div class="media position-relative p-2" style="border-bottom: solid 1px #0CB3AC;">
+                            <img src="images/badminton-court.svg" class="mr-3" alt="...">
+                            <div class="media-body p-3">
+                                <p>สนามแบดมินตัน BKK เปิดใหม่ย่านหนองแขม พื้นสนาม ไม้ปาเก้ Gosen มีก๊วนประจำมาแจมได้
+                                </p>
+                                <p class="text-muted float-left">สมาชิกหมายเลข 1111 23 ชั่วโมง</p>
+                                <p class="float-right text-muted"><i class="fas fa-comment-alt"></i> 23</p>
+                            </div>
+                        </div>
+                        <div class="media position-relative p-2" style="border-bottom: solid 1px #0CB3AC;">
+                            <img src="images/racket.svg" class="mr-3" alt="...">
+                            <div class="media-body p-3">
+                                <p>รีวิวไม้แบดท๊อป 10 ประจำปี 2563 บอกเลยมีแต่เด็ดๆ
+                                </p>
+                                <p class="text-muted float-left">สมาชิกหมายเลข 1111 23 ชั่วโมง</p>
+                                <p class="float-right text-muted"><i class="fas fa-comment-alt"></i> 12</p>
+                            </div>
+                        </div>
+                        <div class="media position-relative p-2" style="border-bottom: solid 1px #0CB3AC;">
+                            <img src="images/real.png" class="mr-3" alt="...">
+                            <div class="media-body p-3">
+                                <p>ใครเคยข้อเท้าพลิกบ้าง ทำไงให้หายไว้ๆ
+                                </p>
+                                <p class="text-muted float-left">สมาชิกหมายเลข 1111 23 ชั่วโมง</p>
+                                <p class="float-right text-muted"><i class="fas fa-comment-alt"></i> 12</p>
+                            </div>
+                        </div>
+                        <div class="media position-relative p-2" style="border-bottom: solid 1px #0CB3AC;">
+                            <img src="images/badminton-court.svg" class="mr-3" alt="...">
+                            <div class="media-body p-3">
+                                <p>สนามแบดมินตัน BKK เปิดใหม่ย่านหนองแขม พื้นสนาม ไม้ปาเก้ Gosen มีก๊วนประจำมาแจมได้
+                                </p>
+                                <p class="text-muted float-left">สมาชิกหมายเลข 1111 23 ชั่วโมง</p>
+                                <p class="float-right text-muted"><i class="fas fa-comment-alt"></i> 23</p>
+                            </div>
+                        </div>
+                        <div class="media position-relative p-2" style="border-bottom: solid 1px #0CB3AC;">
+                            <img src="images/racket.svg" class="mr-3" alt="...">
+                            <div class="media-body p-3">
+                                <p>รีวิวไม้แบดท๊อป 10 ประจำปี 2563 บอกเลยมีแต่เด็ดๆ
+                                </p>
+                                <p class="text-muted float-left">สมาชิกหมายเลข 1111 23 ชั่วโมง</p>
+                                <p class="float-right text-muted"><i class="fas fa-comment-alt"></i> 12</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-info form-control" style="background-color: #34495E;">ดูเพิ่มเติม</button>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-header p-3" style="background-color: #0CB3AC; color: #34493E;"><b>กระทู้ล่าสุด</b>
+                        <p class="m-0" style="font-size: small; color: #fff;">กระทู้ที่มีคนเปิดอ่านมากในขณะนี้ อัปเดตตลอดเวลา</p>
+                    </h3>
+                    <div class="card-body" id="add" style="border: solid 1px #0CB3AC;">
+
+                    </div>
+                    <button type="button" class="btn btn-info form-control" style="background-color: #34495E;">ดูเพิ่มเติม</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <h5 class="card-header" style="background-color: #0CB3AC;color: #fff;">สินค้าแนะนำ</h5>
+                    <div class="card-body" style="border: solid 1px #0CB3AC;">
+                        <div class="row justify-content-md-center">
+                            <a href="" style="width: 120px;height: 120px;margin: 15px;">
+                                <img src="images/2018110219134029889.png" alt="" width="100%">
+                                <p class="text-center text-dark">THURSTER K HMR LIGHT H</p>
+                            </a>
+                            <a href="" style="width: 120px;height: 120px;margin: 15px;">
+                                <img src="images/VT01DGEX-BL-A.png" alt="" width="100%">
+                                <p class="text-center text-dark">VOLTRIC 0.1 DG</p>
+                            </a>
+                            <a href="" style="width: 120px;height: 120px;margin: 15px;">
+                                <img src="images/AX99 full.png" alt="" width="100%">
+                                <p class="text-center text-dark">ASTROX 99</p>
+                            </a>
+                            <a href="" style="width: 120px;height: 120px;margin: 15px;">
+                                <img src="images/duora-55.png" alt="" width="100%">
+                                <p class="text-center text-dark">DUORA 55</p>
+                            </a>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h5 class="card-header p-5" style="background-color: #34495E;color: #fff; text-align: center; height: 300px; ">
+                        320 x 320
+                        <p>สนใจลงโฆษณา </p>
+                        <p> Tel. 094-965-6199</p>
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- container -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        var user = JSON.parse(localStorage.getItem('user'));
+        console.log(user)
+        if (user != null) {
+            $('#user_name').text(user.name)
+            $('#not-login').addClass('d-none')
+            $('#is-login').removeClass('d-none')
+        } else {
+            $('#not-login').removeClass('d-none')
+            $('#is-login').addClass('d-none')
+        }
+
+        logout = () => {
+            localStorage.removeItem('user')
+            $('#not-login').removeClass('d-none')
+            $('#is-login').addClass('d-none')
+        }
+        $().ready(() => {
+            $.ajax({
+                method: "POST",
+                url: "service/themes.php",
+                data: {
+                    action: 'get_theme',
+                    order_by: 'update_at'
+
+                },
+            }).done(function(msg) {
+                console.log(msg)
+                msg = JSON.parse(msg)
+                if (msg.code === 200) {
+                    msg.result.map((item) => {
+                        $("#realtime").append(realtime(item));
+                        return;
+                    })
+                }
+            });
+        })
+        realtime = (item) => {
+            var img = item.image ? item.image : 'https://via.placeholder.com/150';
+            const date = new Date(item.create_at)
+            const result = date.toLocaleDateString('th-TH', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+            })
+            return `
+           
+                <div class="col-md-6 theme-card">
+                    <a href="webbroadContent.html?id=${item.theme_id}" class="text-dark">
+                        <img src="${img}" alt="" class="w-25 m-2 float-left">
+                        <div class="d-flex p-3 h-100 theme-body">
+                            <p>${item.title}</p>
+                            <div class="d-flex h-100">
+                                <p>${result}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            `
+        }
+
+        $().ready(() => {
+            $.ajax({
+                method: "POST",
+                url: "service/themes.php",
+                data: {
+                    action: 'get_theme',
+                    order_by: 'create_at'
+
+                },
+            }).done(function(msg) {
+                console.log(msg)
+                msg = JSON.parse(msg)
+                if (msg.code === 200) {
+                    msg.result.map((item) => {
+                        $("#add").append(add(item));
+                        return;
+                    })
+                }
+            });
+        })
+        add = (item) => {
+            var img = item.image ? item.image : 'https://via.placeholder.com/150';
+            const date = new Date(item.create_at)
+            const result = date.toLocaleDateString('th-TH', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+            })
+            return `
+            <a href="webbroadContent.html?id=${item.theme_id}" class="media p-2 text-dark">
+                <div class="media-body p-3 d-flex"> 
+                    <img class="mr-3 float-left" src="${img}" alt="..." width="150" >
+                    <div class="d-flex px-4 w-100">
+                        <p class="text-muted text-right">${result}</p><br>
+                        <h5>${item.title}</h5>
+                        <div class="media-bottom h-100 " >
+                            <p class="text-muted float-left mb-0">หมายเลขสมาชิก ${item.fk_user_id}</p>
+                            <p class="float-right text-muted mb-0"><i class="fas fa-comment-alt"></i> 0</p>
+                        </div> 
+                    </div>
+                </div>
+            </a>`
+        }
+    </script>
+</body>
+
+</html>

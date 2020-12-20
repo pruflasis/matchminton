@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="Description" content="Enter your description here" />
+    <link rel="icon" href="images/Favicon.ico" type="image/x-icon">
+
+
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Match</title>
+</head>
+
+<body>
+    <div
+        style="background-image: url(images/kl2.png); height: 100vh; width: 100vw; position: fixed; background-position: top; background-size: cover;">
+        <div style="background: rgba(0,0,0,.6); height: 100vh; width: 100vw; position: fixed;">
+        </div>
+    </div>
+    <div class="jumbotron jumbotron-fluid pt-2 mb-0" style="background-color: #000;">
+        <div class="container-fluid p-0">
+            <nav class="navbar navbar-expand-lg navbar-light bg-faded">
+                <button class="navbar-toggler btn-left bg-light float-left" type="button" data-toggle="collapse"
+                    data-target="#navbarMobile" aria-controls="navbarMobile" aria-expanded="false"
+                    aria-label="Toggle navigation" id="navbarToggler">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse nav-fill w-100 ml-3" id="navbarMobile">
+                    <div class="mx-auto headerLogo d-lg-none">
+                        <a href="index.html" class="float-right w-100x  ">
+                            <img src="images/LOGO_MATCHMINTON.png" alt="" class="w-100">
+                        </a>
+                    </div>
+                    <!-- <div class="collapse "> -->
+                    <ul class="nav navbar-nav nav-fill w-100">
+                        <li class="nav-item">
+                            <a class="nav-link" href="match.html">MATCHING</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="buySale.html">SHOP</a>
+                        </li>
+                    </ul>
+                    <!-- </div> -->
+
+                    <div class="mx-auto headerLogo d-none d-lg-block">
+                        <a href="index.html" class="float-right w-100x  ">
+                            <img src="images/LOGO_MATCHMINTON.png" alt="" class="w-100">
+                        </a>
+                    </div>
+                    <ul class="nav navbar-nav nav-fill w-100">
+                        <li class="nav-item">
+                            <a class="nav-link" href="webboard.html">COMMUNITY</a>
+                        </li>
+                        <!-- navbar ในส่วนที่ยังไม่ได้ login จะแสดง LOGIN  -->
+                        <li class="nav-item" id="not-login">
+                            <a class="nav-link" href="login.html">LOGIN</a>
+                        </li>
+                        <li class="nav-item" id="is-login">
+                            <div class="dropdown">
+                                <p class="dropdown-toggle mx-2" type="button" id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                    style="font-size: x-large; padding-top: 8px; font-weight: bold; color: #0AB2AC;">
+                                    ยินดีต้อนรับ คุณ<span id="user_name"></span>
+                                </p>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="Editprofile.html"><i class="fas fa-cog"></i>
+                                        แก้ไขโปรไฟล์</a>
+                                    <a class="dropdown-item" onclick="logout()" href="#"><i
+                                            class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
+                                    <a class="dropdown-item" href="createtheme.html"><i class="fas fa-scroll"></i>
+                                        ตั้งกระทู้</a>
+                                    <a class="dropdown-item" href="order.html"><i class="fas fa-shopping-cart"></i>
+                                        ตะกร้าสินค้า</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header" style="color: #fff; z-index: 1;position: relative;">
+            <h3>เป็นระบบวิเคราะห์และเลือกไม้แบดมินตันที่เหมาะกับผู้เล่น</h3>
+            <p>กรุณาให้ข้อมูลจริงเพื่อให้ระบบทำงานได้อย่างสมบูรณ์</p>
+
+            <style>
+                .cart-b {
+                    color: #212529;
+                    background-color: white;
+                    border-color: #0CB3AC;
+                }
+
+                .cart-b:hover {
+                    background-color: #0CB3AC;
+                }
+
+                #cart-menu {
+                    color: #0CB3AC;
+                }
+            </style>
+
+            <a class="btn cart-b" href="order.html"><i id="cart-menu" class="fas fa-shopping-cart"></i>
+                ตะกร้าสินค้า</a>
+        </div>
+        <form id="regForm" action="#">
+            <div class="tab">
+                <h3>ระยะเวลาตั้งแต่เริ่มเล่นกีฬาแบดมินตันจนถึงปัจจุบัน</h3>
+                <div class="btn-group btn-group-toggle row" data-toggle="buttons">
+                    <label class="btn btn-outline-info col">
+                        <input type="radio" name="play" id="play" value="1" checked=""> มากกว่า 9 เดือน แต่ไม่ถึง 1 ปี
+                    </label>
+
+                    <label class="btn btn-outline-info col">
+                        <input type="radio" name="play" id="play2" value="2"> มากกว่า 1 ปีขึ้นไป
+                    </label>
+                </div>
+            </div>
+            <div class="tab">
+                <h3>ความถี่ในการเล่นแบดมินตัน</h3>
+                <div class="btn-group btn-group-toggle row" data-toggle="buttons">
+                    <label class="btn btn-outline-info col">
+                        <input type="radio" name="f" id="f" value="1" checked=""> น้อยกว่า 2 วัน ต่อ สัปดาห์
+                    </label>
+
+                    <label class="btn btn-outline-info col">
+                        <input type="radio" name="f" id="f2" value="2"> มากกว่า 3 วัน ต่อสัปดาห์
+                    </label>
+                </div>
+            </div>
+            <div class="tab">
+                <h3>อายุของคุณ</h3>
+                <div class="btn-group btn-group-toggle row" data-toggle="buttons">
+                    <label class="btn btn-outline-info col">
+                        <input type="radio" name="age" id="age" value="1" checked=""> น้อยกว่า 20 ปี
+                    </label>
+
+                    <label class="btn btn-outline-info col">
+                        <input type="radio" name="age" id="age2" value="2"> มากกว่า 20 ปีขึ้นไป
+                    </label>
+                </div>
+            </div>
+            <div class="tab">
+                <h3>คำนวณค่า BMI เพื่อวิเคราะลักษณะทางกายภาพ</h3>
+                <div class="row">
+                    <div class="col">
+                        <fieldset class="material mb-3">
+                            <input type="number" id="weight" placeholder="" autocomplete="off" />
+                            <hr />
+                            <label>น้ำหนัก</label>
+                        </fieldset>
+                    </div>
+                    <div class="col">
+                        <fieldset class="material mb-3">
+                            <input type="number" id="height" placeholder="" autocomplete="off" />
+                            <hr />
+                            <label>ส่วนสูง</label>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="tab">
+                <h3>เพศ</h3>
+                <div class="btn-group btn-group-toggle row" data-toggle="buttons">
+                    <label class="btn btn-outline-info col">
+                        <input type="radio" name="sex" id="sex" value="1" checked=""> ชาย
+                    </label>
+
+                    <label class="btn btn-outline-info col">
+                        <input type="radio" name="sex" id="sex2" value="2"> หญิง
+                    </label>
+                </div>
+            </div>
+            <div class="tab">
+                <h3>คุณคิดว่าลูกตบหรือเกมบุกของคุณมีโอกาสในการทำคะแนนได้มากน้อยแค่ไหนในหนึ่งเกม</h3>
+                <div class="btn-group btn-group-toggle row" data-toggle="buttons">
+                    <label class="btn btn-outline-info col">
+                        <input type="radio" name="style" id="style" value="1" checked="">มีโอกาสน้อยมากเหมืองเสี่ยงดวง
+                    </label>
+
+                    <label class="btn btn-outline-info col">
+                        <input type="radio" name="style" id="style2" value="2">ไม่แย่นัก มีโอกาสกลางๆ ไม่มากไม่น้อย
+                    </label>
+
+                    <label class="btn btn-outline-info col">
+                        <input type="radio" name="style" id="style3" value="3">มีโอกาสที่สูงในการทำแต้มจากเกมบุก
+                    </label>
+                </div>
+            </div>
+            <div class="tab">
+                <h3>คุณคิดว่าเกมตั้งรับหรือการเล่นเป็นฝ่ายป้องกันของคุณมีประสิทธิภาพมากน้อยแต่ไหนที่มีโอกาสทำแต้มในหนึ่งเกม
+                </h3>
+                <div class="btn-group btn-group-toggle row" data-toggle="buttons">
+                    <label class="btn btn-outline-info col">
+                        <input type="radio" name="s" id="s" value="1" checked="">มีประสิทธิภาพน้อยถึงน้อยมาก
+                    </label>
+
+                    <label class="btn btn-outline-info col">
+                        <input type="radio" name="s" id="s2" value="2">มีประสิทธิภาพกลางๆ ไม่มากไม่น้อย
+                    </label>
+
+                    <label class="btn btn-outline-info col">
+                        <input type="radio" name="s" id="s3" value="3">มีประสิทธิภาพมากถึงมากที่สุด
+                    </label>
+                </div>
+            </div>
+            <div class="tab">
+                <h3>บริเวณหรือตำแหน่งในสนามแบดที่คุณรับลูกตบหรือตีเซฟบ่อยหรือมากที่สุดในหนึ่งเกม (เกมรับ)</h3>
+                <div class="btn-group btn-group-toggle row" data-toggle="buttons">
+                    <label class="btn btn-outline-info col">
+                        <input type="radio" name="position_d" id="position_d" value="1" checked=""> หน้าเน็ท
+                    </label>
+
+                    <label class="btn btn-outline-info col">
+                        <input type="radio" name="position_d" id="position_d2" value="2"> กลางคอร์ท
+                    </label>
+
+                    <label class="btn btn-outline-info col">
+                        <input type="radio" name="position_d" id="position_d3" value="3"> ท้ายคอร์ท
+                    </label>
+                </div>
+            </div>
+            <div class="tab">
+                <h3>บริเวณหรือตำแหน่งในสนามแบดที่คุณตีลูกหนักหรือลูกตบบ่อยที่สุดในหนึ่งเกม (เกมบุก)</h3>
+                <div class="btn-group btn-group-toggle row" data-toggle="buttons">
+                    <label class="btn btn-outline-info col">
+                        <input type="radio" name="position" id="position" value="1" checked=""> หน้าเน็ท
+                    </label>
+
+                    <label class="btn btn-outline-info col">
+                        <input type="radio" name="position" id="position2" value="2"> กลางคอร์ท
+                    </label>
+
+                    <label class="btn btn-outline-info col">
+                        <input type="radio" name="position" id="position3" value="3"> ท้ายคอร์ท
+                    </label>
+                </div>
+            </div>
+            <div class="tab">
+                <h3>แบรนด์ไม้แบดมินตันที่คุณชื่นชอบ</h3>
+                <div class="btn-group btn-group-toggle row" data-toggle="buttons">
+                    <label class="btn btn-outline-info col">
+                        <input type="radio" name="brand" id="brand" value="1" checked=""> Yonex
+                    </label>
+
+                    <label class="btn btn-outline-info col">
+                        <input type="radio" name="brand" id="brand2" value="2"> Victor
+                    </label>
+
+                    <label class="btn btn-outline-info col">
+                        <input type="radio" name="brand" id="brand3" value="3"> Lining
+                    </label>
+                </div>
+            </div>
+            <div class="tab">
+                <h3>เงินทุนในการซื้อไม้แบดไม้มินตัน</h3>
+                <div class="btn-group btn-group-toggle row" data-toggle="buttons">
+                    <label class="btn btn-outline-info col">
+                        <input type="radio" name="money" id="money" value="1" checked=""> 1,000-2,000 บาท
+                    </label>
+
+                    <label class="btn btn-outline-info col">
+                        <input type="radio" name="money" id="money2" value="2"> 2,000-3,500 บาท
+                    </label>
+
+                    <label class="btn btn-outline-info col">
+                        <input type="radio" name="money" id="money3" value="3"> 3,500 บาทขึ้นไป
+                    </label>
+                </div>
+            </div>
+            <div style="overflow: auto">
+                <div class="text-center mt-3">
+                    <button type="button" class="btn btn-info mx-2" id="prevBtn" onclick="nextPrev(-1)"><i
+                            class="fas fa-angle-left"></i> กลับ</button>
+                    <button type="button" class="btn btn-dark mx-2" id="nextBtn" onclick="nextPrev(1)"
+                        style="width: auto;">ถัดไป <i class="fas fa-angle-right"></i></button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Circles which indicates the steps of the form: -->
+        <div class="list-step d-none d-lg-block" style="text-align: center; margin-top: 40px">
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step" id="condition"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+        </div>
+
+        <div id="summary" class="d-none">
+            <div id="cal"></div>
+            <h4 style="line-height: 0.8; margin-bottom: 0">ไม้แบดมินตันที่เหมาะกับคุณ</h4>
+            <p class="line"><span>MATCHMINTON</span></p>
+
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <div class="row mt-3" id="result"></div>
+                </div>
+            </div>
+        </div>
+
+        <br><br>
+        <!-- Modal Button -->
+        <div class="header" style="color: #fff; z-index: 1;position: relative;">
+            <div class="text-center mb-4">
+                <h3 style="color: #fff;">สาระความรู้เกี่ยวกับไม้แบดมินตัน</h3>
+                <br>
+                <div class="row">
+                    <div class="col-md-4 mb-2">
+                        <button type="button" class="btn btn-dark" data-toggle="modal"
+                            data-target="#Shaft">ระดับความแข็งของก้านไม้ <br>
+                            (Stiffness of Shaft)</button>
+                    </div>
+                    <div class="col-md-4 mb-2">
+                        <button type="button" class="btn btn-dark" data-toggle="modal"
+                            data-target="#Balance">จุดศูนย์ถ่วง
+                            <br> (Balance Point)</button>
+                    </div>
+                    <div class="col mb-2">
+                        <button type="button" class="btn btn-dark" data-toggle="modal"
+                            data-target="#Weight">น้ำหนักของไม้
+                            <br> (Racket Weight)</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Shaft-->
+    <div class="modal fade" id="Shaft" tabindex="-1" aria-labelledby="ShaftLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content" style="background-color: black;">
+
+                <div class="modal-body">
+                    <h4 class="text-center text-light">ระดับความแข็งของก้านไม้ <br> (Stiffness of Shaft)</h4>
+                    <hr class="border-light">
+                    <h6 class="text-light text-center">*ที่ก้านไม้แบดมินตันมักจะมีข้อความระบุไว้ <br> โดยทั่วไปมี 3
+                        ระดับ</h6>
+                    <div class="row text-light">
+                        <div class="col-lg-4">
+                            <div class="card" style="background-color: #0AB2AC;">
+                                <div class="card-body" style="height: 300px;">
+                                    <h5 class="card-title text-center">ระดับ Soft</h5>
+                                    <h6 class="card-subtitle mb-2 text-center">(Flexible)</h6>
+                                    <p class="card-text">ระดับก้านแข็งน้อย หรือก้านอ่อน เหมาะที่จะเป็นไม้รับ
+                                        หรือวางลูกก้านไม้ยืดหยุ่นได้ดี มีแรงดีดลูกจากหน้าไม้ได้ไวแรง
+                                        และยังช่วยเสริมให้ดีดลูกส่งไปท้ายคอร์ด การรับลูกตบ
+                                        เหมาะเป็นลูกโต้ตอบได้ฉับไว
+                                        โดยเฉพาะลูกดาด
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card" style="background-color: #0AB2AC;">
+                                <div class="card-body" style="height: 300px;">
+                                    <h5 class="card-title text-center">ระดับ Mediem</h5>
+                                    <h6 class="card-subtitle mb-2 text-center">(Regular)</h6>
+                                    <p class="card-text">ระดับก้านแข็งปานกลาง
+                                        เหมาะที่จะเป็นได้ทั้งไม้รุกและไม้รับในตัว
+                                        ช่วยเสริมให้การดึงลูกจากหน้าไม้ได้ดี การวาดหน้าไม้ทำไเ้คล่องทั้งแบบรุกและรับ
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card" style="background-color: #0AB2AC;">
+                                <div class="card-body" style="height: 300px;">
+                                    <h5 class="card-title text-center">ระดับ Stiff</h5>
+                                    <h6 class="card-subtitle mb-2 text-center">(Extra Stiff)</h6>
+                                    <p class="card-text">ระดับก้านแข็ง เหมาะที่จะเป็นไม้รุก
+                                        ช่วยให้การส่งถ่ายพลังแรงจากข้อมือไปผลักกระทบกับลูกแบดได้อย่างมีประสิทธิภาพที่สมบูรณ์ทั้งน้ำหนักและทิศทาง
+                                        เช่นลูกตบ ลูกหยอดหน้าตาข่าย ลุกครึ่งตบครึ่งตัด(Topspin)
+                                        เหมาะสำหรับเกมส์รุกเป็นสำคัญอย่างยิ่ง
+                                        ส่วนเกมส์แบบรับก็ทำได้ในระดับที่ดีพอสมควร
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-success" data-dismiss="modal"
+                            style="background-color: #0AB2AC; min-width: 120px;">ปิด</button>
+                        <button type="button" class="btn btn-success"
+                            style="background-color: #0AB2AC; min-width: 120px;">ดูเพิ่มเติม</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Balance-->
+    <div class="modal fade" id="Balance" tabindex="-1" aria-labelledby="BalanceLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content" style="background-color: black;">
+                <div class="modal-body">
+                    <h4 class="text-center text-light">จุดศูนย์ถ่วง <br> (Balance Point)</h4>
+                    <hr class="border-light">
+                    <div class="row text-light">
+                        <div class="col-lg-4">
+                            <div class="card" style="background-color: #0AB2AC;">
+                                <div class="card-body" style="height: 300px;">
+                                    <h5 class="card-title text-center">ไม้หัวเบา</h5>
+                                    <h6 class="card-subtitle mb-2 text-center">(Head Light)</h6>
+                                    <p class="card-text">ไม้หัวเบา น้ำหนักไม้ตกไปอยู่ที่ด้าม
+                                        โมเมนตัวที่จุดกระทบมีน้อย
+                                        การควบคุมหน้าไม้มีความคล่องตัวสูง การเปลี่ยนหน้าไม้ทำได้ดี</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card" style="background-color: #0AB2AC;">
+                                <div class="card-body" style="height: 300px;">
+                                    <h5 class="card-title text-center">ไม้หัวบาลานส์</h5>
+                                    <h6 class="card-subtitle mb-2 text-center">(Head Balance)</h6>
+                                    <p class="card-text">ไม้บาลานส์ หัวไม้และด้ามไม้เท่ากัน
+                                        น้ำหนักไม้ตกที่ศูนย์กลางพอดี
+                                        อยู่กลางๆ ได้ทั้งแรงและการควบคุมทิศทาง</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card" style="background-color: #0AB2AC;">
+                                <div class="card-body" style="height: 300px;">
+                                    <h5 class="card-title text-center">ไม้หัวหนัก</h5>
+                                    <h6 class="card-subtitle mb-2 text-center">(Head Heavy)</h6>
+                                    <p class="card-text">ไม้หัวหนัก น้ำหนักไม้ตกเลยศูนย์กลางไปที่หัวไม้
+                                        ไม้จะมีโมเมนตัมสูง เพิ่มแรงตีได้ดี
+                                        แต่ก็ต้องมีแรงในการควบคุมไม้พอสมควรจากหัวไม้ที่หนักทำให้การเปลี่ยนหน้าไม้ไม่คล่องตัวนัก
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-success" data-dismiss="modal"
+                            style="background-color: #0AB2AC; min-width: 120px;">ปิด</button>
+                        <button type="button" class="btn btn-success"
+                            style="background-color: #0AB2AC; min-width: 120px;">ดูเพิ่มเติม</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Weight-->
+    <div class="modal fade" id="Weight" tabindex="-1" aria-labelledby="WeightLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content" style="background-color: black;">
+                <div class="modal-body">
+                    <h4 class="text-center text-light">น้ำหนักของไม้ <br> (Racket Weight)</h4>
+                    <hr class="border-light">
+                    <div class="row text-light">
+                        <div class="col-lg-4">
+                            <div class="card" style="background-color: #0AB2AC;">
+                                <div class="card-body" style="height: 300px;">
+                                    <h5 class="card-title text-center">5U หรือ 6U</h5>
+                                    <p class="card-text">เป็นไม้ที่มีน้ำหนักค่อนข้างเบา
+                                        แต่ยังให้ประสิทธิภาพในการเล่นได้ดี เหมาะสำหรับคนที่มีสัดส่วนร่างกายที่ผ่อม
+                                        ทำให้เล่นได้ง่ายและไม่เกิดอาการเมื่อล้าจะไม้ที่หนักเกินกว่าร่างกาย</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card" style="background-color: #0AB2AC;">
+                                <div class="card-body" style="height: 300px;">
+                                    <h5 class="card-title text-center">4U</h5>
+                                    <p class="card-text">เป็นไม้ที่มีน้ำหนักมาตราฐาน ไม่หนักเกินไปและไม่เบาเกินไป
+                                        เหมาะกับผู้เล่นที่มีสัดส่วนร่างกายที่สมส่วนถึงค่อนข้างอ้วนขึ้นไป
+                                        จะทำให้สามารถพัฒนาฝีมือได้เร็วยิ่งขึ้น</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card" style="background-color: #0AB2AC;">
+                                <div class="card-body" style="height: 300px;">
+                                    <h5 class="card-title text-center">3U</h5>
+                                    <p class="card-text">เป็นไม้ที่มีน้ำหนักค่อนข้างหนัก
+                                        เหมาะสำหรับผู้เล่นที่มีประสบการณ์ในการเล่นที่นานพอสมควรและเหมาะกับผู้เล่นที่มีสัดส่วนร่างกายตั้งแต่สมส่วนถึงอ้วน
+                                        จะให้ประสิทธิภาพในการเล่นที่ดีและทำให้ผู้เล่นพัฒนาฝีมือได้ดียิ่งขึ้น</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-success" data-dismiss="modal"
+                            style="background-color: #0AB2AC; min-width: 120px;">ปิด</button>
+                        <button type="button" class="btn btn-success"
+                            style="background-color: #0AB2AC; min-width: 120px;">ดูเพิ่มเติม</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <script src="plugins/popper/popper.min.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        var user = JSON.parse(localStorage.getItem('user'));
+        console.log(user);
+        if (user != null) {
+            $('#user_name').text(user.name)
+            $('#not-login').addClass('d-none');
+            $('#is-login').removeClass('d-none');
+        } else {
+            $('#not-login').removeClass('d-none');
+            $('#is-login').addClass('d-none');
+        }
+
+        logout = () => {
+            localStorage.removeItem('user');
+            $('#not-login').removeClass('d-none');
+            $('#is-login').addClass('d-none');
+        };
+    </script>
+
+    <script>
+        var currentTab = 0; // Current tab is set to be the first tab (0)
+        showTab(currentTab); // Display the current tab
+
+        function showTab(n) {
+            // This function will display the specified tab of the form...
+            var x = document.getElementsByClassName('tab');
+            x[n].style.display = 'block';
+            //... and fix the Previous/Next buttons:
+            if (n == 0) {
+                document.getElementById('prevBtn').style.display = 'none';
+            } else {
+                document.getElementById('prevBtn').style.display = 'inline';
+            }
+            if (n == x.length - 1) {
+                document.getElementById('nextBtn').innerHTML = 'เสร็จสิ้น';
+            } else {
+                document.getElementById('nextBtn').innerHTML = 'ถัดไป';
+            }
+            //... and run a function that will display the correct step indicator:
+            fixStepIndicator(n);
+        }
+
+        function nextPrev(n) {
+            // This function will figure out which tab to display
+            var x = document.getElementsByClassName('tab');
+            // Exit the function if any field in the current tab is invalid:
+            if (n == 1 && !validateForm()) return false;
+            if (parseInt($('input[name=age]:checked').val()) == 1) {
+                $('#condition').addClass('d-none');
+                if (currentTab == 2 && n > 0) n++;
+                if (currentTab == 4 && n < 0) n--;
+            } else {
+                $('#condition').removeClass('d-none');
+            }
+            // Hide the current tab:
+            x[currentTab].style.display = 'none';
+            // Increase or decrease the current tab by 1:
+            currentTab = currentTab + n;
+            // if you have reached the end of the form...
+            if (currentTab >= x.length) {
+                // ... the form gets submitted:
+                //
+                calculate();
+
+                $('#regForm').addClass('d-none');
+                $('.list-step').addClass('d-none');
+                $('#summary').removeClass('d-none');
+                return false;
+            }
+            // Otherwise, display the correct tab:
+            showTab(currentTab);
+        }
+
+        const listRacket = [{
+            name: 'Medium',
+            detail: 'เป็นไม้ที่ก้านมีความยืดหยุ่นปานกลางไม่แข็งและอ่อนจนเกินไป เหมาะสำหรับผู้เล่นใหม่และผู้เล่นที่มีประสบการณ์พอสมควร เป็นไม้ที่เล่นได้ทั้งเกมบุกและเกมรับ ช่วยให้พัฒนาฝีมือได้เร็วยิ่งขึ้น และ ในระยะยาวทำให้รู้สไตล์การเล่นของตนเองว่าเป็นสายบุกหรือรับ',
+        }, {
+            name: 'Flexible',
+            detail: 'เป็นไม้ที่ก้านมีความยืดหยุ่นสูงหรือไม้ก้านอ่อน เหมาะสำหรับผู้เล่นใหม่หรือผู้เล่นที่เน้นตีลูกเซฟ เนื่องจากก้านไม้จะมีแรงดีดสูงช่วยเสริมแรงเพื่อรับกับข้อมือของผู่เล่นใหม่',
+        }, {
+            name: 'Stiff',
+            detail: 'เป็นไม้ก้านแข็งความยืดหยุ่นน้อย เหมาะสำหรับผู้เล่นที่มีประสบการณ์สูงหรือมืออาชีพ เนื่องจากก้านไม้ที่แข็งจะต้องใช้ข้อมือที่มากและต้องผ่านการฝึกฝนในระดับหนึ่ง เป็นไม้ที่เด่นในเรื่องการคุมทิศทางในการเล่นลูกต่างๆมีความแม่นยำสูง',
+        },];
+
+        const listWeight = [{
+            name: '5U หรือ 6U',
+            detail: 'เป็นไม้ที่มีน้ำหนักค่อนข้างเบา แต่ยังให้ประสิทธิภาพในการเล่นได้ดี เหมาะสำหรับคนที่มีสัดส่วนร่างกายที่ผ่อม ทำให้เล่นได้ง่ายและไม่เกิดอาการเมื่อล้าจะไม้ที่หนักเกินกว่าร่างกาย',
+        }, {
+            name: '4U',
+            detail: 'เป็นไม้ที่มีน้ำหนักมาตราฐาน ไม่หนักเกินไปและไม่เบาเกินไป เหมาะกับผู้เล่นที่มีสัดส่วนร่างกายที่สมส่วนถึงค่อนข้างอ้วนขึ้นไป จะทำให้สามารถพัฒนาฝีมือได้เร็วยิ่งขึ้น',
+        }, {
+            name: '3U',
+            detail: 'เป็นไม้ที่มีน้ำหนักค่อนข้างหนัก เหมาะสำหรับผู้เล่นที่มีประสบการณ์ในการเล่นที่นานพอสมควรและเหมาะกับผู้เล่นที่มีสัดส่วนร่างกายตั้งแต่สมส่วนถึงอ้วน จะให้ประสิทธิภาพในการเล่นที่ดีและทำให้ผู้เล่นพัฒนาฝีมือได้ดียิ่งขึ้น',
+        },];
+
+        const listBalance = [{
+            name: 'Head Light',
+            detail: 'ไม้หัวเบา น้ำหนักไม้ตกไปอยู่ที่ด้าม โมเมนตัวที่จุดกระทบมีน้อย การควบคุมหน้าไม้มีความคล่องตัวสูง การเปลี่ยนหน้าไม้ทำได้ดี',
+        }, {
+            name: 'Head Balance',
+            detail: 'ไม้บาลานส์ หัวไม้และด้ามไม้เท่ากัน น้ำหนักไม้ตกที่ศูนย์กลางพอดี อยู่กลางๆ ได้ทั้งแรงและการควบคุมทิศทาง',
+        }, {
+            name: 'Head Heavy',
+            detail: 'ไม้หัวหนัก น้ำหนักไม้ตกเลยศูนย์กลางไปที่หัวไม้ ไม้จะมีโมเมนตัมสูง เพิ่มแรงตีได้ดี แต่ก็ต้องมีแรงในการควบคุมไม้พอสมควรจากหัวไม้ที่หนักทำให้การเปลี่ยนหน้าไม้ไม่คล่องตัวนัก',
+        },];
+
+        const listCal = [{
+            name: 'Flexible-Head Light',
+            detail: 'สไลต์การเล่นของคุณ คือ ผู้เล่นเริ่มต้น ที่เน้นเกมป้องกันและการเล่นยื้อเวลา จะเด่นเรื่องการการเปลี่ยนหน้าไม้ที่รวดเร็วเหมาะกับการเล่นลูกดาดหรือลูกเร็วหน้าเน็ท แต่การคุมทิศทางทำได้ไม่ดีนัก',
+            value: '1-0',
+        }, {
+            name: 'Flexible-Head Balance',
+            detail: 'สไลต์การเล่นของคุณ คือ ผู้เล่นเริ่มต้น ที่เน้นเกมป้องกันและการเล่นยื้อเวลา จะเด่นในเรื่องความบาลานซ์แต่ให้แรงส่งได้พอสมควร แต่การคุมทิศทางทำได้ไม่ดีนัก',
+            value: '1-1',
+        }, {
+            name: 'Flexible-Head Heavy',
+            detail: 'สไลต์การเล่นของคุณ คือ ผู้เล่นเริ่มต้น ที่เน้นเกมป้องกันและเล่นเกมยื้อเวลา จะเด่นในเรื่องการส่งแรงที่สูงมากในตอนตี แต่การคุมทิศทางทำได้ไม่ดีนัก',
+            value: '1-2',
+        }, {
+            name: 'Medium-Head Light',
+            detail: 'สไลต์การเล่นของคุณ คือ ผู้เล่นเริ่มต้นถึงผู้เล่นระดับกลาง ที่เน้นการเล่นที่หลากหลายได้ทั้งเกมรับและเกมรุก แต่จะเด่นในเรื่องการเล่นหน้าไม้ที่รวดเร็วโดยมีแนวโน้วที่จะเป็นสายรับหรือสายควบคุมทิศทาง',
+            value: '0-0',
+        }, {
+            name: 'Medium-Head Balance',
+            detail: 'สไลต์การเล่นของคุณ คือ ผู้เล่นเริ่มต้นถึงผู้เล่นระดับกลาง ที่เน้นการเล่นที่หลากหลายได้ทั้งเกมรับและเกมรุกแต่ไม่มีอะไรโดดเด่นกว่ากัน แต่จะเด่นในเรื่องการเล่นที่ครอบคลุม',
+            value: '0-1',
+        }, {
+            name: 'Medium-Head Heavy',
+            detail: 'สไลต์การเล่นของคุณ คือ ผู้เล่นเริ่มต้นถึงผู้เล่นระดับกลาง ที่เน้นการเล่นที่หลากหลายได้ทั้งเกมรับและเกมรุก แต่จะเด่นในเรื่องการเล่นเกมหนักหรือแนวโน้วที่จะเป็นสายรุกเน้นหนัก',
+            value: '0-2',
+        }, {
+            name: 'Stiff-Head Light',
+            detail: 'สไตล์การเล่นของคุณ คือ ผู้เล่นระดับกลางถึงผู้เล่นมืออาชีพ ที่เน้นเกมหนัก จะเด่นในเรื่องการเปลี่ยนหน้าไม้ที่รวดเร็วเหมาะกับการเล่นลูกเร็วหรือลูกดาดที่มีประสิทธิภาพในการคุมทิศทางที่ดีเยี่ยม แต่การช่วยเสริมแรงส่งลูกทำได้ไม่ดีอย่างอยาก',
+            value: '2-0',
+        }, {
+            name: 'Stiff-Head Balance',
+            detail: 'สไตล์การเล่นของคุณ คือ ผู้เล่นระดับกลางถึงผู้เล่นมืออาชีพ ที่เน้นเกมหนัก จะเด่นในเรื่องความบาลานซ์ ในเรื่องความคล่องตัวในการเปลี่ยนหน้าไม้และการส่งแรงทำได้ดีพอสมควร แต่ไม่มีด้านไหนโดดเด่นกว่ากัน',
+            value: '2-1',
+        }, {
+            name: 'Stiff-Heavy',
+            detail: 'สไตล์การเล่นของคุณ คือ ผู้เล่นระดับกลางถึงผู้เล่นมืออาชีพ ที่เน้นเกมหนัก จะเด่นเรื่องการส่งแรงที่ดีทำให้ลูกที่ออกมามีความหนักหน่วยมากและประสิทธิภาพในการคุมทิศทางดีเยี่ยม แต่การเร็วในการเปลี่ยนหน้าไม้ทำได้ไม่มีดี',
+            value: '2-2',
+        },];
+
+        const calculate = () => {
+            var weight = parseFloat($('#weight').val());
+            var height = parseFloat($('#height').val()) / 100;
+            var bmi = weight / (height * height);
+
+            if (!bmi) bmi = 0;
+
+            var exp = parseInt($('input[name=play]:checked').val());
+            var f = parseInt($('input[name=f]:checked').val());
+
+            var sex = parseInt($('input[name=sex]:checked').val());
+
+            var style = parseInt($('input[name=style]:checked').val());
+            var s = parseInt($('input[name=s]:checked').val());
+
+            var position_d = parseInt($('input[name=position_d]:checked').val());
+            var position = parseInt($('input[name=position]:checked').val());
+
+            var brand = parseInt($('input[name=brand]:checked').val());
+
+            var price = parseInt($('input[name=money]:checked').val());
+
+            $.ajax({
+                method: 'POST',
+                url: 'service/product.php',
+                data: {
+                    action: 'calculate',
+                    bmi: bmi,
+                    exp: exp,
+                    f: f,
+                    sex,
+                    style: style,
+                    s: s,
+                    position_d: position_d,
+                    position: position,
+                    brand: brand,
+                    price: price,
+                },
+            }).done(function (msg) {
+                msg = JSON.parse(msg);
+                if (msg.code === 200) {
+                    // window.location.href = "login.html";
+
+                    // listRacket listWeight listBalance
+                    //
+
+                    let racket = 0,
+                        weight = 0,
+                        balance = 0;
+
+                    if ((exp == 1 || exp == 2) && f == 1) {
+                        if (sex == 1) {
+                            if (bmi == 0) {
+                                weight = 1;
+                            } else if (bmi < 19) {
+                                weight = 0;
+                            } else if (bmi >= 19) {
+                                weight = 1;
+                            }
+                        } else {
+                            if (bmi == 0) {
+                                weight = 1;
+                            } else if (bmi < 18) {
+                                weight = 0;
+                            } else if (bmi >= 18) {
+                                weight = 1;
+                            }
+                        }
+
+                        if ((style == 1 && (s == 1 || s == 2)) || (style == 2 && s == 1)) {
+                            racket = 1;
+                        } else {
+                            racket = 0;
+                        }
+                    } else {
+                        if (sex == 1) {
+                            if (bmi == 0) {
+                                weight = 1;
+                            } else if (bmi < 19) {
+                                weight = 0;
+                            } else if (bmi >= 19) {
+                                weight = 1;
+                            }
+                        } else {
+                            if (bmi == 0) {
+                                weight = 1;
+                            } else if (bmi < 18) {
+                                weight = 0;
+                            } else if (bmi >= 18) {
+                                weight = 2;
+                            }
+                        }
+
+                        if ((style == 1 && (s == 1 || s == 2)) || (style == 2 && (s == 1 || s == 2)) || (style == 3 && s == 3)) {
+                            racket = 0;
+                        } else if (style == 1 && s == 3) {
+                            racket = 1;
+                        } else {
+                            racket = 2;
+                        }
+                    }
+
+                    if ((position_d == 2 || position_d == 3) && position == 3) {
+                        balance = 2;
+                    } else if (position == 1) {
+                        balance = 0;
+                    } else {
+                        balance = 1;
+                    }
+
+                    $('#cal').append(verifyCol('ระดับความแข็งของก้านไม้ : ' + listRacket[racket].name, listRacket[racket].detail));
+                    $('#cal').append(verifyCol('น้ำหนักของไม้(Racket Weight) : ' + listWeight[weight].name, listWeight[weight].detail));
+                    $('#cal').append(verifyCol('จุดศูนย์ถ่วง(Balance Point) : ' + listBalance[balance].name, listBalance[balance].detail));
+
+                    var cal = listCal.find((item) => item.value === racket + '-' + balance);
+                    $('#cal').append(verifyCol('ผลการวิเคราะห์ ' + cal.name, cal.detail));
+
+                    var res = msg.result;
+                    for (i = 0; i < res.product.length; i++) {
+                        let image = res.product_images.find((item) => res.product[i].product_id == item.fk_product_id);
+                        $('#result').append(Card(res.product[i], image))
+                    };
+
+
+                    if (user) {
+                        flex = racket == 0 ? 2 : racket == 1 ? 3 : 1,
+                            balance = balance == 0 ? 3 : balance == 2 ? 1 : 1,
+                            weight = weight == 0 ? 77.5 : weight == 1 ? 82.5 : 87.5,
+                            $.ajax({
+                                method: 'POST',
+                                url: 'service/member.php',
+                                data: {
+                                    action: 'update_style',
+                                    flex: flex,
+                                    balance: balance,
+                                    weight: weight,
+                                    user_id: user.user_id
+                                },
+                            }).done(function () {
+                                var tmp = {
+                                    flex: flex,
+                                    balance: balance,
+                                    weight: weight
+                                }
+
+                                user = {
+                                    ...user,
+                                    ...tmp
+                                }
+                                localStorage.setItem('user', JSON.stringify(user));
+                            })
+                    }
+                } else {
+                    $('#result').append('<p>ไม่พบไม้แบตที่เหมาะกับคุณ</p>');
+                }
+            });
+        };
+
+        verifyCol = (title, detail, name = '') => {
+            return `
+            <div class="card" style="background-color: #000; color: #fff;">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <h3 class="card-title">MATCHING<br>SUCCESS!</h3>
+                        </div>
+                        <div class="col">
+                            <h5 class="card-text">ผลการวิเคราะห์ข้อมูล
+                                <font style="color: #0AB2AC; font-size: x-large;">${title}</font>
+                            </h5>
+                            <p>${detail}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+			         `;
+        };
+
+        Card = (item, image) => {
+            var img = image.path ? 'service/' + image.path : 'https://via.placeholder.com/150';
+            return `
+            <div class="col-md-6 col-lg-4">
+                <div class="card">
+                    ${(user && item.flex == user.flex && item.balance == user.balance && item.weight_min <= user.weight && item.weight_max >= user.weight) ? `<span class="position-absolute text-center p-1 w-100" style="background-color:red; color:#fff; left:0;">Recommend</span>` : ``}
+                    <img class="card-img-top w-75 p-2" src="${img}" alt="Card image cap" style="margin-left: 35px; margin-top: 35px">
+                    <div class="card-body">
+                        <h5 class="card-title">${item.product_name} </h5>
+                        <span>${item.price} บาท</span>
+                        <p class="card-text">${item.description}</p>
+                    <div class="d-flex" style="justify-content: flex-end;">
+                        <a href="service/insert_cart.php?user_id=${user && user.user_id}&product_id=${item.product_id}" class="btn btn-light" ><i class="fas fa-shopping-cart"></i></a>
+                    </div>
+                        <div class="overlay">
+                            <div class="text ">
+                                <h3 class="p-4"><a href="productdetail.html?id=${item.product_id}" class="text-decoration-none m-4 text-light" >ดูรายลเอียดเพิ่มเติม</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+			         `;
+        };
+
+        function validateForm() {
+            // This function deals with validation of the form fields
+            var x,
+                y,
+                i,
+                valid = true;
+            x = document.getElementsByClassName('tab');
+            y = x[currentTab].getElementsByTagName('input');
+            // A loop that checks every input field in the current tab:
+            for (i = 0; i < y.length; i++) {
+                // If a field is empty...
+                if (y[i].value == '') {
+                    // add an "invalid" class to the field:
+                    y[i].className += ' invalid';
+                    // and set the current valid status to false
+                    valid = false;
+                }
+            }
+            // If the valid status is true, mark the step as finished and valid:
+            if (valid) {
+                document.getElementsByClassName('step')[currentTab].className += ' finish';
+            }
+            return valid; // return the valid status
+        }
+
+        function fixStepIndicator(n) {
+            // This function removes the "active" class of all steps...
+            var i,
+                x = document.getElementsByClassName('step');
+            for (i = 0; i < x.length; i++) {
+                x[i].className = x[i].className.replace(' active', '');
+            }
+            //... and adds the "active" class on the current step:
+            x[n].className += ' active';
+        }
+    </script>
+</body>
+
+</html>

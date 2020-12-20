@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/knowledge.css">
+    <title>ORDER DETAIL</title>
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid pt-4 mb-0" style="background-color: #fff;">
+        <div class="container-fluid p-0">
+            <nav class="navbar navbar-expand-lg navbar-light bg-faded">
+                <button class="navbar-toggler btn-left bg-light float-left" type="button" data-toggle="collapse" data-target="#navbarMobile" aria-controls="navbarMobile" aria-expanded="false" aria-label="Toggle navigation" id="navbarToggler">
+              <span class="navbar-toggler-icon"></span>
+                    </button>
+                <div class="collapse navbar-collapse nav-fill w-100 ml-3" id="navbarMobile">
+                    <div class="mx-auto headerLogo d-lg-none">
+                        <a href="index.html" class="float-right w-100x  ">
+                            <img src="images/LOGO_MATCHMINTON.png" alt="" class="w-100">
+                        </a>
+                    </div>
+                    <!-- <div class="collapse "> -->
+                    <ul class="nav navbar-nav nav-fill w-100">
+                        <li class="nav-item">
+                            <a class="nav-link" href="match.html">MATCHING</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="buySale.html">SHOP</a>
+                        </li>
+                    </ul>
+                    <!-- </div> -->
+
+                    <div class="mx-auto headerLogo d-none d-lg-block">
+                        <a href="index.html" class="float-right w-100x  ">
+                            <img src="images/LOGO_MATCHMINTON.png" alt="" class="w-100">
+                        </a>
+                    </div>
+
+                    <!-- <div class="collapse navbar-collapse nav-fill w-100"> -->
+
+                    <ul class="nav navbar-nav nav-fill w-100">
+                        <li class="nav-item">
+                            <a class="nav-link" href="webboard.html">COMMUNITY</a>
+                        </li>
+                        <!-- navbar ในส่วนที่ยังไม่ได้ login จะแสดง LOGIN  -->
+                        <li class="nav-item" id="not-login">
+                            <a class="nav-link" href="login.html">LOGIN</a>
+                        </li>
+                        <!-- </ul> 
+                         <ul class="navbar-nav px-0"> 
+                         <li class="nav-item">
+                            <a href="createtheme.html"><button type="button" class="btn btn-info mx-2" data-toggle="modal" data-target="#exampleModal">ตั้งกระทู้</button></a>
+                        </li> 
+                         <li class="nav-item">
+                            &nbsp;<a href="order.html"><i class="fas fa-shopping-cart"></i></a>
+                        </li> -->
+                        <!-- navbar ในส่วนที่ login  ยินดีต้อนรับ คุณ<span id="user_name"></span>  -->
+                        <li class="nav-item" id="is-login">
+                            <div class="dropdown">
+                                <p class="dropdown-toggle mx-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: x-large; padding-top: 8px; font-weight: bold; color: #0AB2AC;">
+                                    ยินดีต้อนรับ คุณ<span id="user_name"></span>
+                                </p>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="Editprofile.html"><i class="fas fa-cog"></i> แก้ไขโปรไฟล์</a>
+                                    <a class="dropdown-item" onclick="logout()" href="#"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
+                                    <a class="dropdown-item" href="createtheme.html"><i class="fas fa-scroll"></i> ตั้งกระทู้</a>
+                                    <a class="dropdown-item" href="order.html"><i class="fas fa-shopping-cart"></i> ตะกร้าสินค้า</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="container">
+        <div id="main-result"></div>
+
+
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        var user = JSON.parse(localStorage.getItem('user'));
+        console.log(user)
+        if (user != null) {
+            $('#user_name').text(user.name)
+            $('#not-login').addClass('d-none')
+            $('#is-login').removeClass('d-none')
+        } else {
+            $('#not-login').removeClass('d-none')
+            $('#is-login').addClass('d-none')
+        }
+
+        logout = () => {
+            localStorage.removeItem('user')
+            $('#not-login').removeClass('d-none')
+            $('#is-login').addClass('d-none')
+        }
+
+        const calSum = (carts) => {
+            var sum = carts.reduce((total, val) => {
+                var c = products.find(item => item.cart_id == val.cart_id) || {
+                    price: 0
+                }
+                return parseFloat(c.price * c.amount) + total
+            }, 0);
+            return (sum);
+        }
+
+        $().ready(() => {
+            $.ajax({
+                method: "POST",
+                url: "service/order.php",
+                data: {
+                    action: 'show_order',
+                    user_id: user.user_id
+                },
+            }).done(function(msg) {
+                // console.log(msg)
+                msg = JSON.parse(msg)
+                if (msg.code === 200) {
+                    var res = msg.result;
+
+                    var order_list = res.product.map((item) => item.order_id);
+                    order_list = new Set(order_list);
+                    order_list = [...order_list];
+
+                    for (var i = 0; i < order_list.length; i++) {
+                        var list_product = res.product.filter((item) => item.order_id == order_list[i]);
+                        var sum = list_product.reduce((total, val) => (val.price * val.amount) + total, 0);
+
+                        var data = `<div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6 class="folat-left font-weight-normal">หมายเลขคำสั่งซื้อ: ${order_list[i]} </h6>
+                                </div>
+                                <div class="col">
+                                    <h6 class="float-right">
+                                        <font class="text-right" style="color: #0CB3AC;">กำลังจัดส่ง</font>
+                                    </h6>
+                                </div>
+                            </div>
+                            <div id="result">${Product(res,list_product)}</div>
+                            <div class="text-right">
+                                <h5><img src="images/LOGO_MATCHMINTON.jpg" alt="" width="100"> ยอดสั่งซื้อทั้งหมด (${list_product.reduce((total,item)=> total + parseInt(item.amount) ,0)} ชิ้น):
+                                    <font style="color: #0CB3AC;">฿ ${sum +  Math.round(list_product.reduce((total,item)=> total + parseInt(item.amount) ,0)/2)*20 }</font>
+                                </h5>
+                            </div>
+                            <hr>
+                        </div>
+                        </div>`;
+
+                        $('#main-result').append(data);
+                    }
+                }
+            });
+        })
+
+        Product = (res, list_product) => {
+            var text = '';
+            for (i = 0; i < list_product.length; i++) {
+                let image = res.product_images.find((item) => res.product[i].product_id == item.fk_product_id);
+                text += Card(list_product[i], image);
+            };
+            return text;
+        }
+
+        Card = (item, image) => {
+
+            var img = image ? 'service/' + image.path : 'https://via.placeholder.com/150';
+            return `
+                <div class="row">
+                    <div class="col-md-9">
+                        <h6 class="font-weight-normal">
+                            <div class="media">
+                                <img src="${img}" class="align-self-center mr-3 border" alt="..." style="width: 50px; height: 50px;">
+                                <div class="media-body ">
+                                    <p class="m-0">${item.product_name}</p>
+                                    <p>x ${item.amount}</p>
+                                </div>
+                            </div>
+                        </h6>
+                    </div>
+                    <div class="col d-flex justify-content-end" style="flex-direction: column;">
+                        <h6 class="align-self-end" style="flex-direction: column;color: #0CB3AC;">฿ ${item.price * item.amount}</h6>
+                    </div>
+                </div>
+                <hr>
+                    
+            `;
+        };
+    </script>
+</body>
+
+</html>

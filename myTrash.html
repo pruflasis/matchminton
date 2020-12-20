@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/knowledge.css">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+    <title>My Trash</title>
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid pt-4 mb-0" style="background-color: #fff;">
+        <div class="container-fluid p-0">
+            <nav class="navbar navbar-expand-lg navbar-light bg-faded">
+                <button class="navbar-toggler btn-left bg-light float-left" type="button" data-toggle="collapse" data-target="#navbarMobile" aria-controls="navbarMobile" aria-expanded="false" aria-label="Toggle navigation" id="navbarToggler">
+              <span class="navbar-toggler-icon"></span>
+                    </button>
+                <div class="collapse navbar-collapse nav-fill w-100 ml-3" id="navbarMobile">
+                    <div class="mx-auto headerLogo d-lg-none">
+                        <a href="index.html" class="float-right w-100x  ">
+                            <img src="images/LOGO_MATCHMINTON.png" alt="" class="w-100">
+                        </a>
+                    </div>
+                    <!-- <div class="collapse "> -->
+                    <ul class="nav navbar-nav nav-fill w-100">
+                        <li class="nav-item">
+                            <a class="nav-link" href="match.html">MATCHING</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="buySale.html">SHOP</a>
+                        </li>
+                    </ul>
+                    <!-- </div> -->
+
+                    <div class="mx-auto headerLogo d-none d-lg-block">
+                        <a href="index.html" class="float-right w-100x  ">
+                            <img src="images/LOGO_MATCHMINTON.png" alt="" class="w-100">
+                        </a>
+                    </div>
+
+                    <!-- <div class="collapse navbar-collapse nav-fill w-100"> -->
+
+                    <ul class="nav navbar-nav nav-fill w-100">
+                        <li class="nav-item">
+                            <a class="nav-link" href="webboard.html">COMMUNITY</a>
+                        </li>
+                        <!-- navbar ในส่วนที่ยังไม่ได้ login จะแสดง LOGIN  -->
+                        <li class="nav-item" id="not-login">
+                            <a class="nav-link" href="login.html">LOGIN</a>
+                        </li>
+                        <!-- </ul> 
+                         <ul class="navbar-nav px-0"> 
+                         <li class="nav-item">
+                            <a href="createtheme.html"><button type="button" class="btn btn-info mx-2" data-toggle="modal" data-target="#exampleModal">ตั้งกระทู้</button></a>
+                        </li> 
+                         <li class="nav-item">
+                            &nbsp;<a href="order.html"><i class="fas fa-shopping-cart"></i></a>
+                        </li> -->
+                        <!-- navbar ในส่วนที่ login  ยินดีต้อนรับ คุณ<span id="user_name"></span>  -->
+                        <li class="nav-item" id="is-login">
+                            <div class="dropdown">
+                                <p class="dropdown-toggle mx-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: x-large; padding-top: 8px; font-weight: bold; color: #0AB2AC;">
+                                    ยินดีต้อนรับ คุณ<span id="user_name"></span>
+                                </p>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="Editprofile.html"><i class="fas fa-cog"></i> แก้ไขโปรไฟล์</a>
+                                    <a class="dropdown-item" onclick="logout()" href="#"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
+                                    <a class="dropdown-item" href="createtheme.html"><i class="fas fa-scroll"></i> ตั้งกระทู้</a>
+                                    <a class="dropdown-item" href="order.html"><i class="fas fa-shopping-cart"></i> ตะกร้าสินค้า</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row my-3">
+            <div class="col-md-3">
+                <div class="card mr-0">
+                    <div class="card-body">
+                        <h6><a href="myTheme.html" class="text-dark">กระทู้ของคุณ <span class="badge badge-danger">3</span></a></h6>
+                        <!-- <h6><a href="" class="text-dark">การตอบกลับ</a></h6> -->
+                        <h6><a href="myTrash.html" class="text-dark">ถังขยะ</a></h6>
+                    </div>
+                </div>
+                <div class="card mr-0">
+                    <div class="card-body">
+                        <h5>หมวดหมู่</h5>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="court" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                        สนามแบด
+                    </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="racket" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                        ไม้แบดมินตัน
+                    </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="shoes" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                        รองเท้าแบดมินตัน
+                    </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="clothes" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                        เสื้อผ้า
+                    </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="knowledge" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                        สาระความรู้
+                    </label>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-md-9" id="card">
+                <h3>ถ้งขยะ</h3>
+                <!-- <div class="card">
+                    <div class="card-body">
+                        <span class="float-left"><h5 class="card-title">รีวิวไม้แบดท๊อป 10 ประจำปี 2563 บอกเลยมีแต่เด็ดๆ</h5></span>
+                        <span class="float-right"><p>18 ส.ค. 2563</p></span>
+                        <br><br>
+                        <span class="float-left"><p class="card-title">กู้คืน</p></span>
+                        <span class="float-right"><p class="float-right text-muted"><i class="fas fa-comment-alt"></i> 21</p></span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <img src="images/real.png" alt="" class="float-left mx-2"><span class="float-left mx-2 pt-3"><h5 class="card-title">ใครเคยข้อเท้าพลิกบ้าง ทำไงให้หายไว้ๆ</h5></span>
+                        <span class="float-right pt-3"><p>18 ส.ค. 2563</p></span>
+                        <br><br><br>
+                        <span class="float-left"><p class="card-title">กู้คืน</p></span>
+                        <span class="float-right"><p class="float-right text-muted"><i class="fas fa-comment-alt"></i> 21</p></span>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <!-- container -->
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script>
+            var user = JSON.parse(localStorage.getItem('user'));
+            console.log(user)
+            if (user != null) {
+                $('#user_name').text(user.name)
+                $('#not-login').addClass('d-none')
+                $('#is-login').removeClass('d-none')
+            } else {
+                $('#not-login').removeClass('d-none')
+                $('#is-login').addClass('d-none')
+            }
+
+            logout = () => {
+                localStorage.removeItem('user')
+                $('#not-login').removeClass('d-none')
+                $('#is-login').addClass('d-none')
+            }
+
+            $().ready(() => {
+                $.ajax({
+                    method: "POST",
+                    url: "service/themes.php",
+                    data: {
+                        action: 'get_trash',
+                        user_id: user.user_id
+                    },
+                }).done(function(msg) {
+                    console.log(msg)
+                    msg = JSON.parse(msg)
+                    if (msg.code === 200) {
+                        msg.result.map((item) => {
+                            $("#card").append(card(item));
+                            return;
+                        })
+                    }
+                });
+            })
+            card = (item) => {
+                const date = new Date(item.create_at)
+                const result = date.toLocaleDateString('th-TH', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                })
+                return `
+                <div class="card">
+                    <div class="card-body">
+                        <span class="float-left"><h5 class="card-title">${item.title}</h5></span>
+                        <span class="float-right"><p>${result}</p></span>
+                        <br><br>
+                        <span class="float-left"><a href="?id=${item.theme_id}"  class="text-dark" onclick=calltheme(${item.theme_id})><p class="card-title" >กู้คืน</p></a></span>
+                        <span class="float-right"><p class="float-right text-muted"><i class="fas fa-comment-alt"></i> 0</p></span>
+                    </div>
+                </div>
+                `
+            }
+        </script>
+        <script>
+            const calltheme = (id) => {
+                $.ajax({
+                    method: "POST",
+                    url: "service/themes.php",
+                    data: {
+                        action: 'call_theme',
+                        theme_id: id
+                    }
+                }).done(function(msg) {
+                    console.log(msg)
+                    msg = JSON.parse(msg)
+                    if (msg.code === 200) {
+                        alert('กู้คืนข้อมูลสำเร็จ');
+
+                        localStorage.setItem('user', JSON.stringify(msg.result));
+                    }
+                });
+            }
+        </script>
+</body>
+
+</html>

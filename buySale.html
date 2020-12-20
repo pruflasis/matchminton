@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/knowledge.css">
+    <link rel="stylesheet" href="css/other.css">
+    <title>SHOP MATCHMINTON</title>
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid pt-2 mb-0" style="background-color: #000;">
+        <div class="container-fluid p-0">
+            <nav class="navbar navbar-expand-lg navbar-light bg-faded">
+                <button class="navbar-toggler btn-left bg-light float-left" type="button" data-toggle="collapse"
+                    data-target="#navbarMobile" aria-controls="navbarMobile" aria-expanded="false"
+                    aria-label="Toggle navigation" id="navbarToggler">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse nav-fill w-100 ml-3" id="navbarMobile">
+                    <div class="mx-auto headerLogo d-lg-none">
+                        <a href="index.html" class="float-right w-100x  ">
+                            <img src="images/LOGO_MATCHMINTON.png" alt="" class="w-100">
+                        </a>
+                    </div>
+                    <!-- <div class="collapse "> -->
+                    <ul class="nav navbar-nav nav-fill w-100">
+                        <li class="nav-item">
+                            <a class="nav-link" href="match.html">MATCHING</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="buySale.html">SHOP</a>
+                        </li>
+                    </ul>
+                    <!-- </div> -->
+
+                    <div class="mx-auto headerLogo d-none d-lg-block">
+                        <a href="index.html" class="float-right w-100x  ">
+                            <img src="images/LOGO_MATCHMINTON.png" alt="" class="w-100">
+                        </a>
+                    </div>
+
+                    <!-- <div class="collapse navbar-collapse nav-fill w-100"> -->
+
+                    <ul class="nav navbar-nav nav-fill w-100">
+                        <li class="nav-item">
+                            <a class="nav-link" href="webboard.html">COMMUNITY</a>
+                        </li>
+                        <!-- navbar ในส่วนที่ยังไม่ได้ login จะแสดง LOGIN  -->
+                        <li class="nav-item" id="not-login">
+                            <a class="nav-link" href="login.html">LOGIN</a>
+                        </li>
+                        <!-- </ul> 
+                         <ul class="navbar-nav px-0"> 
+                         <li class="nav-item">
+                            <a href="createtheme.html"><button type="button" class="btn btn-info mx-2" data-toggle="modal" data-target="#exampleModal">ตั้งกระทู้</button></a>
+                        </li> 
+                         <li class="nav-item">
+                            &nbsp;<a href="order.html"><i class="fas fa-shopping-cart"></i></a>
+                        </li> -->
+                        <!-- navbar ในส่วนที่ login  ยินดีต้อนรับ คุณ<span id="user_name"></span>  -->
+                        <li class="nav-item" id="is-login">
+                            <div class="dropdown">
+                                <p class="dropdown-toggle mx-2" type="button" id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                    style="font-size: x-large; padding-top: 8px; font-weight: bold; color: #0AB2AC;">
+                                    ยินดีต้อนรับ คุณ<span id="user_name"></span>
+                                </p>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="Editprofile.html"><i class="fas fa-cog"></i>
+                                        แก้ไขโปรไฟล์</a>
+                                    <a class="dropdown-item" onclick="logout()" href="#"><i
+                                            class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
+                                    <a class="dropdown-item" href="createtheme.html"><i class="fas fa-scroll"></i>
+                                        ตั้งกระทู้</a>
+                                    <a class="dropdown-item" href="order.html"><i class="fas fa-shopping-cart"></i>
+                                        ตะกร้าสินค้า</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <div class="banner-img pt-2" style=" background-image: url(images/banner.PNG);">
+            <div class="text-light text-right mx-5">
+                <h2>MATCH FOR YOUR NOW!!</h2>
+                <button type="button" class="btn btn-danger">PLAY NOW &nbsp;<i class="fas fa-caret-right"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <!-- <div class="row my-3"> -->
+        <!--<div class="col">
+                 <div style="width: auto; height: 300px; background-color: #888888;"></div> -->
+        <!-- <p class="mb-0 mt-2">ประเภทสินค้า</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="new" id="new_tools">
+                    <label class="form-check-label" for="new_tools">
+                        มือหนึ่ง
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="old" id="old_tools">
+                    <label class="form-check-label" for="old_tools">
+                        มือสอง
+                    </label>
+                </div> 
+                <p class="mb-0 mt-2">หมวดหมู่</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="racket" id="racket">
+                    <label class="form-check-label" for="racket">
+                        ไม้แบดมินตัน
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="shoes" id="shoes">
+                    <label class="form-check-label" for="shoes">
+                        รองเท้า
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="clothes" id="clothes">
+                    <label class="form-check-label" for="clothes">
+                        เสื้อกีฬา
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="pants" id="pants">
+                    <label class="form-check-label" for="pants">
+                        กางเกง
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="sinew" id="sinew">
+                    <label class="form-check-label" for="sinew">
+                        เอ็น
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="grip" id="grip">
+                    <label class="form-check-label" for="grip">
+                        กร๊ิปพันด้าม
+                    </label>
+                </div>
+                <p class="mb-0 mt-2">แบรนด์</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Yonex" id="Yonex">
+                    <label class="form-check-label" for="Yonex">
+                        Yonex
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Lining" id="Lining">
+                    <label class="form-check-label" for="Lining">
+                        Lining
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Victor" id="Victor">
+                    <label class="form-check-label" for="Victor">
+                        Victor
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Apacs" id="Apacs">
+                    <label class="form-check-label" for="Apacs">
+                        Apacs 
+                    </label>
+                </div>
+                <p class="mb-0 mt-2">ราคา</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="min" id="min">
+                    <label class="form-check-label" for="min">
+                        ต่ำสุด
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="max" id="max">
+                    <label class="form-check-label" for="max">
+                        สูงสุด 
+                    </label>
+                </div>
+            </div>
+            <div class="col-9">-->
+        <div class="row my-4">
+            <div class="col-md-4 mb-1">
+                <select class="form-select btn-dark form-control w-100" aria-label="Default select example">
+                    <option selected>หมวดสินค้า</option>
+                    <option value="1">ไม้แบดมินตัน</option>
+                    <option value="2">รองเท้า</option>
+                    <option value="3">เสื้อกีฬา</option>
+                    <option value="4">กางเกง</option>
+                    <option value="5">เอ็น</option>
+                    <option value="6">กร๊ิปพันด้าม</option>
+                </select>
+            </div>
+            <div class="col-md-4 mb-1">
+                <div class="input-group">
+                    <input type="text" class="form-control btn-dark w-100" placeholder="SEARCH PRODUCT"
+                        id="searchproduct" onkeyup="search(this)">
+                </div>
+                <!-- <button type="button" class="btn btn-dark form-control w-100">Search <i class="fas fa-search"></i></button> -->
+            </div>
+            <div class="col mb-1">
+                <select class="form-select btn-dark form-control w-100" aria-label="Default select example">
+                    <option selected>เรียงตาม</option>
+                    <option value="1">ความนิยม</option>
+                    <option value="2">ราคาสูง</option>
+                    <option value="3">ราคาต่ำ</option>
+                </select>
+            </div>
+            <!-- <div class="input-group col-md-4 mb-3 mt-4 float-left">
+                    <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <div class="input-group-append d-inline">
+                        <button class="btn btn-outline-secondary " type="button" id="button-addon2"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center float-left">
+                    <a href="admin/sale.html"><button type="button" class="btn btn-warning  mt-4 "> ลงขาย</button></a>
+                </div>
+                <div class="col-md-4 float-right">
+                    <form class="p-0 mr-0 text-right">
+                        <label for="Arrange">เรียงตาม:</label>
+                        <select class="btn btn-info" name="Arrange" id="Arrange">
+                                <option value="Popular">ความนิยม</option>
+                                <option value="hardy">ความทนทาน</option>
+                            </select>
+                    </form>
+                </div> -->
+        </div>
+        <div class="row" id="result">
+
+            <!-- <div class="col-md-4">
+                        <div class="card">
+                            <a href="productdetail.html"><img src="images/image.png" class="card-img-top" alt="..."></a>
+                            <div class="card-body">
+                                <h5 class="card-title">ASTROX 99
+                                    <p class="float-right" style="color: #FF6565;">฿5,295.00</p>
+                                </h5>
+                                <p>฿7,790.00</p>
+                                <p class="card-text">Flex: Stiff Weight / Grip Size: 4U (Ave.83g) G5 / 3U (Ave.88g) G5 Stringing Advice: 3U 21-29lbs / 4U 20-28lbs B.Pt: Head Heavy Balance</p>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <button type="button" class="btn btn-primary"><i class="fas fa-shopping-cart"></i>ใส่ในรถเข็น</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <a href="productdetail.html"><img src="images/image.png" class="card-img-top" alt="..."></a>
+                            <div class="card-body">
+                                <h5 class="card-title">ASTROX 99
+                                    <p class="float-right" style="color: #FF6565;">฿5,295.00</p>
+                                </h5>
+                                <p>฿7,790.00</p>
+                                <p class="card-text">Flex: Stiff Weight / Grip Size: 4U (Ave.83g) G5 / 3U (Ave.88g) G5 Stringing Advice: 3U 21-29lbs / 4U 20-28lbs B.Pt: Head Heavy Balance</p>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <button type="button" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> ใส่ในรถเข็น</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <a href="productdetail.html"><img src="images/image.png" class="card-img-top" alt="..."></a>
+                            <div class="card-body">
+                                <h5 class="card-title">ASTROX 99
+                                    <p class="float-right" style="color: #FF6565;">฿5,295.00</p>
+                                </h5>
+                                <p>฿7,790.00</p>
+                                <p class="card-text">Flex: Stiff Weight / Grip Size: 4U (Ave.83g) G5 / 3U (Ave.88g) G5 Stringing Advice: 3U 21-29lbs / 4U 20-28lbs B.Pt: Head Heavy Balance</p>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <button type="button" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> ใส่ในรถเข็น</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <a href="productdetail.html"><img src="images/image.png" class="card-img-top" alt="..."></a>
+                            <div class="card-body">
+                                <h5 class="card-title">ASTROX 99
+                                    <p class="float-right" style="color: #FF6565;">฿5,295.00</p>
+                                </h5>
+                                <p>฿7,790.00</p>
+                                <p class="card-text">Flex: Stiff Weight / Grip Size: 4U (Ave.83g) G5 / 3U (Ave.88g) G5 Stringing Advice: 3U 21-29lbs / 4U 20-28lbs B.Pt: Head Heavy Balance</p>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <button type="button" class="btn btn-primary"><i class="fas fa-shopping-cart"></i>ใส่ในรถเข็น</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <a href="productdetail.html"><img src="images/image.png" class="card-img-top" alt="..."></a>
+                            <div class="card-body">
+                                <h5 class="card-title">ASTROX 99
+                                    <p class="float-right" style="color: #FF6565;">฿5,295.00</p>
+                                </h5>
+                                <p>฿7,790.00</p>
+                                <p class="card-text">Flex: Stiff Weight / Grip Size: 4U (Ave.83g) G5 / 3U (Ave.88g) G5 Stringing Advice: 3U 21-29lbs / 4U 20-28lbs B.Pt: Head Heavy Balance</p>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <button type="button" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> ใส่ในรถเข็น</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <a href="productdetail.html"><img src="images/image.png" class="card-img-top" alt="..."></a>
+                            <div class="card-body">
+                                <h5 class="card-title">ASTROX 99
+                                    <p class="float-right" style="color: #FF6565;">฿5,295.00</p>
+                                </h5>
+                                <p>฿7,790.00</p>
+                                <p class="card-text">Flex: Stiff Weight / Grip Size: 4U (Ave.83g) G5 / 3U (Ave.88g) G5 Stringing Advice: 3U 21-29lbs / 4U 20-28lbs B.Pt: Head Heavy Balance</p>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <button type="button" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> ใส่ในรถเข็น</button>
+                            </div>
+                        </div>
+                    </div> -->
+        </div>
+    </div>
+    <!-- <div class="col">
+        <div style="width: auto; height: 300px; background-color: #888888;"></div>
+    </div>
+    </div> -->
+
+    </div>
+    <!-- container -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        var user = JSON.parse(localStorage.getItem('user'));
+        // console.log(user)
+        if (user != null) {
+            $('#user_name').text(user.name)
+            $('#not-login').addClass('d-none')
+            $('#is-login').removeClass('d-none')
+        } else {
+            $('#not-login').removeClass('d-none')
+            $('#is-login').addClass('d-none')
+        }
+
+        logout = () => {
+            localStorage.removeItem('user')
+            $('#not-login').removeClass('d-none')
+            $('#is-login').addClass('d-none')
+        }
+
+
+        $().ready(() => {
+            $.ajax({
+                method: "POST",
+                url: "service/product.php",
+                data: {
+                    action: 'show_product_card',
+                    search: $('#searchproduct').val(),
+                },
+            }).done(function (msg) {
+                // console.log(msg)
+                msg = JSON.parse(msg)
+                if (msg.code === 200) {
+                    var res = msg.result;
+                    for (i = 0; i < res.product.length; i++) {
+                        let image = res.product_images.find((item) => res.product[i].product_id == item.fk_product_id);
+                        $('#result').append(Card(res.product[i], image));
+                    };
+                }
+            });
+        })
+
+        function search(e) {
+            $.ajax({
+                method: "POST",
+                url: "service/product.php",
+                data: {
+                    action: 'show_product_card',
+                    search: $('#searchproduct').val(),
+                }
+            }).done(function (msg) {
+                console.log(msg)
+                msg = JSON.parse(msg)
+                if (msg.code === 200) {
+                    var res = msg.result;
+                    for (i = 0; i < res.product.length; i++) {
+                        let image = res.product_images.find((item) => res.product[i].product_id == item.fk_product_id);
+                        $('#result').append(Card(res.product[i], image));
+                        // $("#searchproduct").empty();
+                    };
+                }
+            });
+        }
+
+        // function currencyFormat(num) {
+        //     return '฿' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+        // }
+
+        function formatCurrency(num) {
+            // number = parseFloat(number);
+            return num.toFixed(2).replace(/./g, function (c, i, a) {
+                return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c;
+            });
+        }
+
+
+        Card = (item, image) => {
+            // console.log(item, image)
+            var img = image ? 'service/' + image.path : 'https://via.placeholder.com/150';
+            return `
+            <div class="col-md-6 col-lg-4">
+                <div class="card">
+                    ${(user && item.flex == user.flex && item.balance == user.balance && item.weight_min <= user.weight && item.weight_max >= user.weight) ? `<span class="position-absolute text-center p-1 w-100" style="background-color:red; color:#fff; left:0;">Recommend</span>` : ``}
+                    <img class="card-img-top w-75 p-2" src="${img}" alt="Card image cap" style="margin-left: 35px; margin-top: 35px">
+                    <div class="card-body">
+                        <h5 class="card-title">${item.product_name} </h5>
+                        <span>${formatCurrency(item.price * 1)}</span>
+                        <p class="card-text">${item.description}</p>
+                    <div class="d-flex" style="justify-content: flex-end;">
+                        <a href="service/insert_cart.php?user_id=${user && user.user_id}&product_id=${item.product_id}" class="btn btn-light" ><i class="fas fa-shopping-cart"></i></a>
+                    </div>
+                        <div class="overlay">
+                            <div class="text ">
+                                <h3 class="p-4"><a href="productdetail.html?id=${item.product_id}" class="text-decoration-none m-4 text-light" >ดูรายลเอียดเพิ่มเติม</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            `;
+        };
+    </script>
+</body>
+
+</html>

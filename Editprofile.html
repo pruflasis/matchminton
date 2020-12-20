@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="icon" href="images/Favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Edit Profile</title>
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid pt-2 mb-0" style="background-color: #fff;">
+        <div class="container-fluid p-0">
+            <nav class="navbar navbar-expand-lg navbar-light bg-faded">
+                <button class="navbar-toggler btn-left bg-light float-left" type="button" data-toggle="collapse"
+                    data-target="#navbarMobile" aria-controls="navbarMobile" aria-expanded="false"
+                    aria-label="Toggle navigation" id="navbarToggler">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse nav-fill w-100 ml-3" id="navbarMobile">
+                    <div class="mx-auto headerLogo d-lg-none">
+                        <a href="index.html" class="float-right w-100x  ">
+                            <img src="images/LOGO_MATCHMINTON.png" alt="" class="w-100">
+                        </a>
+                    </div>
+                    <!-- <div class="collapse "> -->
+                    <ul class="nav navbar-nav nav-fill w-100">
+                        <li class="nav-item">
+                            <a class="nav-link" href="match.html">MATCHING</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="buySale.html">SHOP</a>
+                        </li>
+                    </ul>
+                    <!-- </div> -->
+
+                    <div class="mx-auto headerLogo d-none d-lg-block">
+                        <a href="index.html" class="float-right w-100x  ">
+                            <img src="images/LOGO_MATCHMINTON.png" alt="" class="w-100">
+                        </a>
+                    </div>
+
+                    <!-- <div class="collapse navbar-collapse nav-fill w-100"> -->
+
+                    <ul class="nav navbar-nav nav-fill w-100">
+                        <li class="nav-item">
+                            <a class="nav-link" href="webboard.html">COMMUNITY</a>
+                        </li>
+                        <!-- navbar ในส่วนที่ยังไม่ได้ login จะแสดง LOGIN  -->
+                        <li class="nav-item" id="not-login">
+                            <a class="nav-link" href="login.html">LOGIN</a>
+                        </li>
+                        <!-- </ul> 
+                         <ul class="navbar-nav px-0"> 
+                         <li class="nav-item">
+                            <a href="createtheme.html"><button type="button" class="btn btn-info mx-2" data-toggle="modal" data-target="#exampleModal">ตั้งกระทู้</button></a>
+                        </li> 
+                         <li class="nav-item">
+                            &nbsp;<a href="order.html"><i class="fas fa-shopping-cart"></i></a>
+                        </li> -->
+                        <!-- navbar ในส่วนที่ login  ยินดีต้อนรับ คุณ<span id="user_name"></span>  -->
+                        <li class="nav-item" id="is-login">
+                            <div class="dropdown">
+                                <p class="dropdown-toggle mx-2" type="button" id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                    style="font-size: x-large; padding-top: 8px; font-weight: bold; color: #0AB2AC;">
+                                    ยินดีต้อนรับ <span id="user_name"></span>
+                                </p>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="Editprofile.html"><i class="fas fa-cog"></i>
+                                        แก้ไขโปรไฟล์</a>
+                                    <a class="dropdown-item" onclick="logout()" href="#"><i
+                                            class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
+                                    <a class="dropdown-item" href="createtheme.html"><i class="fas fa-scroll"></i>
+                                        ตั้งกระทู้</a>
+                                    <a class="dropdown-item" href="order.html"><i class="fas fa-shopping-cart"></i>
+                                        ตะกร้าสินค้า</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <div class="bg-editprofile">
+
+        <form class="form-signin">
+            <div class="text-center mb-4">
+                <img class="" src="images/profile.png" alt="" width="72" height="72">
+                <div class="btu-login mb-3">
+                    <a href="">เปลี่ยนรูป</a>
+                </div>
+                <h1 class="h3 mb-3 font-weight-normal">แก้ไขโปรไฟล์</h1>
+                <!-- <p>แก้ไขโปรไฟล์</p> -->
+            </div>
+
+            <div class="form-label-group">
+                <input type="text" id="name" class="form-control" placeholder="John" autocomplete="off" required>
+                <label>ชื่อ</label>
+            </div>
+
+            <div class="form-label-group">
+                <input type="text" id="surname" class="form-control" placeholder="Doe" autocomplete="off" required>
+                <label>นามสกุล</label>
+            </div>
+
+            <div class="form-label-group">
+                <input type="text" id="phone" class="form-control" placeholder="0123456789" autocomplete="off" required>
+                <label>หมายเลขโทรศัพท์</label>
+            </div>
+
+            <div class="form-label-group">
+                <input type="text" id="email" class="form-control" placeholder="test@test.app" autocomplete="off"
+                    required>
+                <label>อีเมล์</label>
+            </div>
+
+            <div class="form-label-group">
+
+            </div>
+            <div class="checkbox mb-3">
+
+            </div>
+            <button class="btn btn-lg btn-primary btn-block mb-3" onclick="edit(this)" type="submit">บันทึก</button>
+            <!-- <p class="mt-5 mb-3 text-muted text-center" >&copy; 2017-2020</p> -->
+        </form>
+
+
+
+        <!-- <div class="row justify-content-center">
+            <div class="col-5 pt-5 px-5 my-5 text-center"
+                style="background-color: #fff; border-radius: 15px 15px 15px 15px;">
+                <div class="circle-big">
+                    <img src="images/profile.png">
+                </div>
+                <div class="btu-login">
+                    <a href="">เปลี่ยนรูป</a>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <fieldset class="material mb-3">
+                            <input type="text" id="name" placeholder="John" autocomplete="off" required>
+                            <hr>
+                            <label>ชื่อ</label>
+                        </fieldset>
+                    </div>
+                    <div class="col">
+                        <fieldset class="material mb-3">
+                            <input type="text" id="surname" placeholder="Doe" autocomplete="off" required>
+                            <hr>
+                            <label>นามสกุล</label>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <fieldset class="material mb-3">
+                            <input type="text" id="phone" placeholder="023576274" autocomplete="off" required>
+                            <hr>
+                            <label>หมายเลขโทรศัพท์</label>
+                        </fieldset>
+                        <button type="button" class="btn btn-success">รับ OTP</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <fieldset class="material mb-3">
+                            <input type="text" id="email" placeholder="test@test.app" autocomplete="off" required>
+                            <hr>
+                            <label>อีเมล์</label>
+                        </fieldset>
+                    </div>
+                    <div class="col">
+
+                    </div>
+                </div>
+                <div class="form-label">
+                    <button class="btn btn-secondary" type="button" onclick="edit(this)"
+                        style="background-color: #43425D;">บันทึก</button>
+                </div>
+            </div>
+        </div> -->
+
+    </div>
+
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <script src="plugins/popper/popper.min.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    <script>
+        var user = JSON.parse(localStorage.getItem('user'));
+        console.log(user)
+        if (user != null) {
+            $('#user_name').text(user.name)
+            $('#not-login').addClass('d-none')
+            $('#is-login').removeClass('d-none')
+        } else {
+            $('#not-login').removeClass('d-none')
+            $('#is-login').addClass('d-none')
+        }
+
+        logout = () => {
+            localStorage.removeItem('user')
+            $('#not-login').removeClass('d-none')
+            $('#is-login').addClass('d-none')
+        }
+    </script>
+    <script>
+        var user = JSON.parse(localStorage.getItem('user'));
+        $('#name').val(user.name);
+        $('#surname').val(user.surname);
+        $('#phone').val(user.phone);
+        $('#email').val(user.email);
+
+        logout = () => {
+            localStorage.removeItem('user')
+            window.location.href = "login.html";
+        }
+
+
+        const edit = (e) => {
+            $.ajax({
+                method: "POST",
+                url: "service/member.php",
+                data: {
+                    action: 'edit',
+                    user_id: user.user_id,
+                    name: $('#name').val(),
+                    surname: $('#surname').val(),
+                    phone: $('#phone').val(),
+                    email: $('#email').val()
+                }
+            }).done(function (msg) {
+                // console.log(msg)
+                msg = JSON.parse(msg)
+                if (msg.code === 200) {
+                    alert('แก้ไขข้อมูลสำเร็จ');
+                    window.location.href = "Editprofile.html";
+
+                    localStorage.setItem('user', JSON.stringify(msg.result));
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

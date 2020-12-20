@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+
+    <title>create theme</title>
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid pt-4 mb-0" style="background-color: #fff;">
+        <div class="container-fluid p-0">
+            <nav class="navbar navbar-expand-lg navbar-light bg-faded">
+                <button class="navbar-toggler btn-left bg-light float-left" type="button" data-toggle="collapse"
+                    data-target="#navbarMobile" aria-controls="navbarMobile" aria-expanded="false"
+                    aria-label="Toggle navigation" id="navbarToggler">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse nav-fill w-100 ml-3" id="navbarMobile">
+                    <div class="mx-auto headerLogo d-lg-none">
+                        <a href="index.html" class="float-right w-100x  ">
+                            <img src="images/LOGO_MATCHMINTON.png" alt="" class="w-100">
+                        </a>
+                    </div>
+                    <!-- <div class="collapse "> -->
+                    <ul class="nav navbar-nav nav-fill w-100">
+                        <li class="nav-item">
+                            <a class="nav-link" href="match.html">MATCHING</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="buySale.html">SHOP</a>
+                        </li>
+                    </ul>
+                    <!-- </div> -->
+
+                    <div class="mx-auto headerLogo d-none d-lg-block">
+                        <a href="index.html" class="float-right w-100x  ">
+                            <img src="images/LOGO_MATCHMINTON.png" alt="" class="w-100">
+                        </a>
+                    </div>
+
+                    <!-- <div class="collapse navbar-collapse nav-fill w-100"> -->
+
+                    <ul class="nav navbar-nav nav-fill w-100">
+                        <li class="nav-item">
+                            <a class="nav-link" href="webboard.html">COMMUNITY</a>
+                        </li>
+                        <!-- navbar ในส่วนที่ยังไม่ได้ login จะแสดง LOGIN  -->
+                        <li class="nav-item" id="not-login">
+                            <a class="nav-link" href="login.html">LOGIN</a>
+                        </li>
+                        <!-- </ul> 
+                         <ul class="navbar-nav px-0"> 
+                         <li class="nav-item">
+                            <a href="createtheme.html"><button type="button" class="btn btn-info mx-2" data-toggle="modal" data-target="#exampleModal">ตั้งกระทู้</button></a>
+                        </li> 
+                         <li class="nav-item">
+                            &nbsp;<a href="order.html"><i class="fas fa-shopping-cart"></i></a>
+                        </li> -->
+                        <!-- navbar ในส่วนที่ login  ยินดีต้อนรับ คุณ<span id="user_name"></span>  -->
+                        <li class="nav-item" id="is-login">
+                            <div class="dropdown">
+                                <p class="dropdown-toggle mx-2" type="button" id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                    style="font-size: x-large; padding-top: 8px; font-weight: bold; color: #0AB2AC;">
+                                    ยินดีต้อนรับ คุณ<span id="user_name"></span>
+                                </p>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="Editprofile.html"><i class="fas fa-cog"></i>
+                                        แก้ไขโปรไฟล์</a>
+                                    <a class="dropdown-item" onclick="logout()" href="#"><i
+                                            class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
+                                    <a class="dropdown-item" href="createtheme.html"><i class="fas fa-scroll"></i>
+                                        ตั้งกระทู้</a>
+                                    <a class="dropdown-item" href="order.html"><i class="fas fa-shopping-cart"></i>
+                                        ตะกร้าสินค้า</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row my-3">
+            <div class="col-md-3">
+                <div class="card mr-0">
+                    <div class="card-body">
+                        <h6><a href="myTheme.html" class="text-dark">กระทู้ของคุณ <span
+                                    class="badge badge-danger">3</span></a></h6>
+                        <!-- <h6><a href="" class="text-dark">การตอบกลับ</a></h6> -->
+                        <h6><a href="myTrash.html" class="text-dark">ถังขยะ</a></h6>
+                    </div>
+                </div>
+                <div class="card mr-0">
+                    <div class="card-body">
+                        <h5>หมวดหมู่</h5>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="court" name="category" id="court">
+                            <label class="form-check-label" for="court">
+                                สนามแบด
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="racket" name="category" id="racket">
+                            <label class="form-check-label" for="racket">
+                                ไม้แบดมินตัน
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="shoes" name="category" id="shoes">
+                            <label class="form-check-label" for="shoes">
+                                รองเท้าแบดมินตัน
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="clothes" name="category" id="clothes">
+                            <label class="form-check-label" for="clothes">
+                                เสื้อผ้า
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="knowledge" name="category"
+                                id="knowledge">
+                            <label class="form-check-label" for="knowledge">
+                                สาระความรู้
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9 ">
+                <form class="mx-0 p-0">
+                    <div class="form-group">
+                        <input type="text" class="form-control p-0" id="header" aria-describedby="header"
+                            placeholder="หัวข้อเรื่อง">
+                        <small id="header" class="form-text text-muted"> * พิมได้ไม่เกิน 120 ตัวอักษร (0/120)</small>
+                    </div>
+                </form>
+                <div id="summernote"></div>
+
+                <small id="header" class="form-text text-muted"> * พิมได้ไม่เกิน 10,000 ตัวอักษร (0/10,000)</small>
+                <div class="text-center my-5"> <button type="button" class="btn btn-info"
+                        onclick="create(this);">ตั้งกระทู้</button></div>
+            </div><br>
+
+        </div>
+    </div>
+    <!-- container -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <script src="plugins/popper/popper.min.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    <script>
+        var user = JSON.parse(localStorage.getItem('user'));
+        console.log(user)
+        if (user != null) {
+            $('#user_name').text(user.name)
+            $('#not-login').addClass('d-none')
+            $('#is-login').removeClass('d-none')
+        } else {
+            $('#not-login').removeClass('d-none')
+            $('#is-login').addClass('d-none')
+        }
+
+        $('#summernote').summernote({
+            placeholder: 'เขียนกระทู้',
+            tabsize: 2,
+            height: 400,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ]
+        });
+
+        logout = () => {
+            localStorage.removeItem('user')
+            $('#not-login').removeClass('d-none')
+            $('#is-login').addClass('d-none')
+        }
+
+        const create = (e) => {
+            var form_data = new FormData();
+            var user = JSON.parse(localStorage.getItem('user'));
+            form_data.append('action', 'create_theme');
+            form_data.append('header', $('#header').val());
+            form_data.append('summernote', $('#summernote').summernote('code'));
+            form_data.append('category', $("input[name='category']:checked").val());
+            form_data.append('user_id', user.user_id);
+
+            $.ajax({
+                method: "POST",
+                url: "service/themes.php",
+                data: form_data,
+                processData: false,
+                contentType: false,
+            }).done(function (msg) {
+                console.log(msg);
+                msg = JSON.parse(msg)
+                if (msg.code === 200) {
+                    window.location.href = "webboard.html";
+                }
+            });
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/knowledge.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+
+
+
+    <title>webbroad content</title>
+</head>
+
+<body>
+
+    <div class="jumbotron jumbotron-fluid pt-4 mb-0" style="background-color: #fff;">
+        <div class="container-fluid p-0">
+            <nav class="navbar navbar-expand-lg navbar-light bg-faded">
+                <button class="navbar-toggler btn-left bg-light float-left" type="button" data-toggle="collapse" data-target="#navbarMobile" aria-controls="navbarMobile" aria-expanded="false" aria-label="Toggle navigation" id="navbarToggler">
+              <span class="navbar-toggler-icon"></span>
+                    </button>
+                <div class="collapse navbar-collapse nav-fill w-100 ml-3" id="navbarMobile">
+                    <div class="mx-auto headerLogo d-lg-none">
+                        <a href="index.html" class="float-right w-100x  ">
+                            <img src="images/LOGO_MATCHMINTON.png" alt="" class="w-100">
+                        </a>
+                    </div>
+                    <!-- <div class="collapse "> -->
+                    <ul class="nav navbar-nav nav-fill w-100">
+                        <li class="nav-item">
+                            <a class="nav-link" href="match.html">MATCHING</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="buySale.html">SHOP</a>
+                        </li>
+                    </ul>
+                    <!-- </div> -->
+
+                    <div class="mx-auto headerLogo d-none d-lg-block">
+                        <a href="index.html" class="float-right w-100x  ">
+                            <img src="images/LOGO_MATCHMINTON.png" alt="" class="w-100">
+                        </a>
+                    </div>
+
+                    <!-- <div class="collapse navbar-collapse nav-fill w-100"> -->
+
+                    <ul class="nav navbar-nav nav-fill w-100">
+                        <li class="nav-item">
+                            <a class="nav-link" href="webboard.html">COMMUNITY</a>
+                        </li>
+                        <!-- navbar ในส่วนที่ยังไม่ได้ login จะแสดง LOGIN  -->
+                        <li class="nav-item" id="not-login">
+                            <a class="nav-link" href="login.html">LOGIN</a>
+                        </li>
+                        <!-- </ul> 
+                         <ul class="navbar-nav px-0"> 
+                         <li class="nav-item">
+                            <a href="createtheme.html"><button type="button" class="btn btn-info mx-2" data-toggle="modal" data-target="#exampleModal">ตั้งกระทู้</button></a>
+                        </li> 
+                         <li class="nav-item">
+                            &nbsp;<a href="order.html"><i class="fas fa-shopping-cart"></i></a>
+                        </li> -->
+                        <!-- navbar ในส่วนที่ login  ยินดีต้อนรับ คุณ<span id="user_name"></span>  -->
+                        <li class="nav-item" id="is-login">
+                            <div class="dropdown">
+                                <p class="dropdown-toggle mx-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: x-large; padding-top: 8px; font-weight: bold; color: #0AB2AC;">
+                                    ยินดีต้อนรับ คุณ<span id="user_name"></span>
+                                </p>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="Editprofile.html"><i class="fas fa-cog"></i> แก้ไขโปรไฟล์</a>
+                                    <a class="dropdown-item" onclick="logout()" href="#"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
+                                    <a class="dropdown-item" href="createtheme.html"><i class="fas fa-scroll"></i> ตั้งกระทู้</a>
+                                    <a class="dropdown-item" href="order.html"><i class="fas fa-shopping-cart"></i> ตะกร้าสินค้า</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div style="background-color: #0CB3AC; width: 100%; height: 38px;">
+        <div class="container">
+            <div class="col-md-3 float-left p-2"><i class="fas fa-chalkboard"></i> หน้าแรก</div>
+            <div class="input-group col-md-4 mb-3 float-right">
+                <input type="text" class="form-control" placeholder="ค้นหา" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2" style="background-color: #000;"><i class="fas fa-search" style="color: #fff;"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card" id="callcontent">
+
+        </div>
+
+        <div class="card ml-5 p-5" style="background-color: #0CB3AC;">
+            <div class="card-body" style="background-color: #eee; color: #fff;">
+                <div id="summernote"></div>
+
+                <button type="button" class="btn btn-success float-left" onclick="create(this);">ส่งข้อความ</button>
+                <div class="media position-relative col-md-4 pl-5 pt-2 text-dark" style="border: 0px;">
+                    <img src="images/news1.PNG" class="mr-3 w-25" alt="...">
+                    <div class="media-body">
+                        <p class="mt-0">สมาชิกหมายเลข 99999</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="getcontent"></div>
+
+
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+    <script>
+        var user = JSON.parse(localStorage.getItem('user'));
+        console.log(user)
+        if (user != null) {
+            $('#user_name').text(user.name)
+            $('#not-login').addClass('d-none')
+            $('#is-login').removeClass('d-none')
+        } else {
+            $('#not-login').removeClass('d-none')
+            $('#is-login').addClass('d-none')
+        }
+
+        logout = () => {
+            localStorage.removeItem('user')
+            $('#not-login').removeClass('d-none')
+            $('#is-login').addClass('d-none')
+        }
+        $('#summernote').summernote({
+            placeholder: 'เขียนกระทู้',
+            tabsize: 2,
+            height: 400,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ]
+        });
+
+        const create = (e) => {
+            var form_data = new FormData();
+            var user = JSON.parse(localStorage.getItem('user'));
+            form_data.append('action', 'create_comment');
+            form_data.append('summernote', $('#summernote').summernote('code'));
+            form_data.append('user_id', user.user_id);
+            form_data.append('ref_theme', getUrlVars()["id"]);
+
+            $.ajax({
+                method: "POST",
+                url: "service/themes.php",
+                data: form_data,
+                processData: false,
+                contentType: false,
+            }).done(function(msg) {
+                console.log(msg);
+                msg = JSON.parse(msg)
+                if (msg.code === 200) {
+                    window.location.href = "webboard.html";
+                }
+            });
+
+        }
+
+        function getUrlVars() {
+            var vars = [],
+                hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
+
+        $().ready(() => {
+            $.ajax({
+                method: "POST",
+                url: "service/themes.php",
+                data: {
+                    action: 'get_edit_theme',
+                    theme_id: getUrlVars()["id"]
+
+                },
+            }).done(function(msg) {
+                console.log(msg)
+                msg = JSON.parse(msg)
+                if (msg.code === 200) {
+                    $("#callcontent").append(callcontent(msg.result));
+                    // $('#summernote').summernote('code', msg.result.content);
+                    return;
+                }
+            });
+        })
+        callcontent = (item) => {
+            var img = item.image ? item.image : 'https://via.placeholder.com/150';
+            const date = new Date(item.create_at)
+            const result = date.toLocaleDateString('th-TH', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+            })
+            return `
+            
+                <h5 class="card-header" style="background-color: #34495E; color: #0CB3AC;">ชื่อหัวข้อเรื่องกระทู้--${item.title}</h5>
+                <div class="card-body" style="background-color: #34495E; color: #fff;">
+                    <p>หมวดหมู่ ชื่อห้อง</p>
+                    <div class="text-center">
+                        <img src="${img}" alt="" class="w-25">
+                    </div>
+                    <h5 class="card-title">${item.title}</h5>
+                    <p class="card-text p-2">${item.content}</p>
+                    <hr style="border: azure 1px dashed;">
+                    <div class="media position-relative col-md-4 pl-5 float-left" style="border:0px">
+                        <img src="${img}" class="mr-3 w-25" alt="...">
+                        <div class="media-body">
+                            <p class="m-0">สมาชิกหมายเลข ${item.fk_user_id}</p>
+                            <p>${result}</p>
+                        </div>
+                    </div>
+                </div>
+           `
+        }
+        $().ready(() => {
+            $.ajax({
+                method: "POST",
+                url: "service/themes.php",
+                data: {
+                    action: 'get_comment_with_id',
+                    theme_id: getUrlVars()["id"]
+
+                },
+            }).done(function(msg) {
+                console.log(msg)
+                msg = JSON.parse(msg)
+                if (msg.code === 200) {
+                    msg.result.map((item) => {
+                        $("#getcontent").append(getcontent(item));
+                        return;
+                    })
+                }
+            });
+        })
+        getcontent = (item) => {
+            var img = item.image ? item.image : 'https://via.placeholder.com/150';
+            const date = new Date(item.create_at)
+            const result = date.toLocaleDateString('th-TH', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+            })
+            return `
+            <div class="card">
+                <div class="card-body" style="background-color: #34495E; color: #fff;">
+                    <p class="text-muted">ความคิดเห็นที่ </p>
+                    <p class="card-text p-2">${item.content}</p>
+                    <hr style="border: azure 1px dashed;">
+                    <div class="media position-relative col-md-4 pl-5 float-left mt-3" style="border: 0px">
+                        <img src="${img}" class="mr-3 w-25" alt="...">
+                        <div class="media-body">
+                            <p class="m-0">สมาชิกหมายเลข ${item.fk_user_id}</p>
+                            <p>${result}</p>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+           `
+        }
+    </script>
+    <script>
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
+
+    <!-- <link rel="stylesheet" href="../css/admin.css"> -->
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Dashboard</title>
+</head>
+<style>
+    .sidebar {
+        position: fixed;
+        top: 0px;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        padding: 20px 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+        border-right: 1px solid #eee;
+        width: 250px;
+    }
+
+    .sidebar .nav-item {
+        width: 100%;
+    }
+
+    /* @media (min-width: 250px).ml-sm-auto,.mx-sm-auto {
+        margin-left: auto !important;
+    } */
+</style>
+
+<body>
+    <div class="container-fluid">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-2">
+                    <img src="../images/LOGO_MATCHMINTON.png" alt="" class="w-100">
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+                        <a class="nav-link active" id="dashboard-tab" data-toggle="pill" href="#dashboard" role="tab"
+                            aria-controls="dashboard" aria-selected="true"><i class="fas fa-chart-line"></i>
+                            Dashboard</a>
+                        <!-- <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"><i class="fas fa-file-signature"></i> Requisitions</a> -->
+                        <a class="nav-link" id="v-pills-stock-tab" data-toggle="pill" href="#v-pills-stock" role="tab"
+                            aria-controls="v-pills-stock" aria-selected="false"><i class="fas fa-store-alt"></i>
+                            Stock</a>
+                        <a class="nav-link" id="v-pills-member-tab" data-toggle="pill" href="#v-pills-member" role="tab"
+                            aria-controls="v-pills-member" aria-selected="false"><i class="fas fa-users"></i> Member</a>
+                        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings"
+                            role="tab" aria-controls="v-pills-settings" aria-selected="false"><i
+                                class="fas fa-file-invoice"></i> Report</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <nav class="navbar navbar-light bg-light">
+                    <form class="form-inline p-0 m-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                    <div class="form-inline">
+                        <div class="dropdown">
+                            <a class="btn dropdown-toggle" href="#" role="button" id="user" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bell"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right p-2" aria-labelledby="user"
+                                style="width: 500px; ">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <p>2 นาทีที่แล้ว</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><i class="fas fa-bell text-warning"></i> รายการสั่งซื้อ ของคุณ อดิศร
+                                            ปกรณ์พานิช</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <p>2 ชั่วโมงที่แล้ว</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><i class="fas fa-bell text-secondary"></i> Your all items has approved,
+                                            please collect from store</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <p>18:31</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><i class="fas fa-bell text-secondary"></i> Your all items has approved,
+                                            please collect from store</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <a class="btn dropdown-toggle" href="#" role="button" id="user" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <i class="far fa-user-circle"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="user">
+                                <a class="dropdown-item" href="login_admin.html"><i class="fas fa-sign-out-alt"></i>
+                                    logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <div class="tab-content" id="v-pills-tabContent">
+                    <!-- //content dashboard// -->
+                    <div class="tab-pane fade show active" id="dashboard" role="tabpanel"
+                        aria-labelledby="dashboard-tab">
+                        <div class="card mb-3">
+                            <div class="card-header" style="background-color: #fff;">
+                                <h4 class="float-left mr-1">Order</h4><span id="amountOrder"
+                                    class="badge badge-pill badge-secondary"></span>
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-borderless">
+                                    <thead>
+                                        <tr class="text-center">
+                                            <td>Order ID</td>
+                                            <td>Name</td>
+                                            <td>Time</td>
+                                            <td>Total Price</td>
+                                            <td>Payment</td>
+                                            <td></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="result">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="card">
+                                    <div class="card-header" style="background-color: #fff;">
+                                        <h4 class="float-left mr-1">Stock</h4><button type="button"
+                                            class="btn btn-outline-primary float-right">See All</button>
+
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="form-group row">
+                                                <label for="formControlRange">Example Range input</label>
+                                                <input type="range" class="form-control-range col-md-6"
+                                                    id="formControlRange" style="background-color: red;">
+                                            </div>
+                                        </form>
+                                        <div class="chart-container" style="position: relative; ">
+                                            <canvas id="chart"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="card">
+                                    <div class="card-header" style="background-color: #fff;">
+                                        <h4 class="float-left mr-1">Usage</h4>
+
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="chart-container" style="position: relative; ">
+                                            <canvas id="chart2"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
+                        aria-labelledby="v-pills-profile-tab">
+                        <div class="card mb-3">
+                            <div class="card-header" style="background-color: #fff;">
+                                <h4 class="float-left mr-1">Requisitions</h4><span
+                                    class="badge badge-pill badge-secondary"> 12</span>
+                            </div>
+                            <div class="card-body">
+                                <table class="table">
+                                    <thead>
+                                        <tr class="text-center">
+                                            <td>Name</td>
+                                            <td>Position</td>
+                                            <td>Department</td>
+                                            <td>Mobile NO.</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Grant Marshall</td>
+                                            <td>Junior Software Engineer</td>
+                                            <td>IT</td>
+                                            <td>01718332233</td>
+                                            <td><button type="button" class="btn btn-primary" data-toggle="modal"
+                                                    data-target="#orderList">Order Details</button></td>
+                                            <td><button type="button" class="btn btn-danger">ลบ</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Grant Marshall</td>
+                                            <td>Junior Software Engineer</td>
+                                            <td>IT</td>
+                                            <td>01718332233</td>
+                                            <td><button type="button" class="btn btn-primary" data-toggle="modal"
+                                                    data-target="#orderList">Order Details</button></td>
+                                            <td><button type="button" class="btn btn-danger">ลบ</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Grant Marshall</td>
+                                            <td>Junior Software Engineer</td>
+                                            <td>IT</td>
+                                            <td>01718332233</td>
+                                            <td><button type="button" class="btn btn-primary" data-toggle="modal"
+                                                    data-target="#orderList">Order Details</button></td>
+                                            <td><button type="button" class="btn btn-danger">ลบ</button></td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!-- Modal -->
+                                <div class="modal fade" id="orderList" tabindex="-1" aria-labelledby="orderListLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="text-center">Order List</h4>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <p class=" m-0">Order ID</p>
+                                                        <p class=" m-0">ID</p>
+                                                        <p class=" m-0">Name</p>
+                                                        <p class=" m-0">Mobile</p>
+                                                    </div>
+                                                    <div class="col">
+                                                        <p class=" m-0">000001</p>
+                                                        <p class=" m-0">000001</p>
+                                                        <p class=" m-0">Grant Marshall</p>
+                                                        <p class=" m-0">01718332233</p>
+                                                    </div>
+                                                </div>
+
+                                                <table class="table mt-2">
+                                                    <thead>
+                                                        <tr class="text-center">
+                                                            <td class="text-left">Item Name</td>
+                                                            <td>Quantity</td>
+                                                            <td>Price</td>
+                                                            <td>Stock Availability</td>
+                                                            <td></td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Astrox 99</td>
+                                                            <td class="text-center">1</td>
+                                                            <td class="text-center">2000</td>
+                                                            <td class="text-center">9</td>
+                                                            <td><button type="button" class="btn btn-danger"><i
+                                                                        class="far fa-trash-alt"></i></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Astrox 99</td>
+                                                            <td class="text-center">1</td>
+                                                            <td class="text-center">2000</td>
+                                                            <td class="text-center">9</td>
+                                                            <td><button type="button" class="btn btn-danger"><i
+                                                                        class="far fa-trash-alt"></i></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Astrox 99</td>
+                                                            <td class="text-center">1</td>
+                                                            <td class="text-center">2000</td>
+                                                            <td class="text-center">9</td>
+                                                            <td><button type="button" class="btn btn-danger"><i
+                                                                        class="far fa-trash-alt"></i></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-right">รวม</td>
+                                                            <td class="text-center">3</td>
+                                                            <td class="text-center">8000</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group ">
+                                                            <label for="sender"><br> </label>
+                                                            <select class="form-control" id="sender">
+                                                                <option>J&T</option>
+                                                                <option>2</option>
+                                                                <option>3</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group ">
+                                                            <label for="NumSendProduct">เลขพัสดุ</label>
+                                                            <input type="text" class="form-control" id="NumSendProduct">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="note">หมายเหตุ</label>
+                                                            <input type="text" class="form-control" id="note">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-success">อัพเดต</button>
+                                                <button type="button" class="btn btn-danger"
+                                                    data-dismiss="modal">ยกเลิก</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="card">
+                                    <div class="card-header" style="background-color: #fff;">
+                                        <h4 class="float-left mr-1">Stock</h4><button type="button"
+                                            class="btn btn-outline-primary float-right">See All</button>
+
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="form-group row">
+                                                <label for="formControlRange">Example Range input</label>
+                                                <input type="range" class="form-control-range col-md-6"
+                                                    id="formControlRange" style="background-color: red;">
+                                            </div>
+                                        </form>
+                                        <div class="chart-container" style="position: relative; ">
+                                            <canvas id="chart"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="card">
+                                    <div class="card-header" style="background-color: #fff;">
+                                        <h4 class="float-left mr-1">Usage</h4>
+
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="chart-container" style="position: relative; ">
+                                            <canvas id="chart2"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-stock" role="tabpanel" aria-labelledby="v-pills-stock-tab">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">Available Stock
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Add New Stock</a>
+                            </li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                                <table class="table text-center">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>รูป</th>
+                                            <th>ชื่อสินค้า</th>
+                                            <th>จำนวน</th>
+                                            <th>ขายแล้ว</th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td scope="row">001</td>
+                                            <td><img src="../images/kl1.png" alt="" style="width: 100px; height: 50px;">
+                                            </td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                            <td>Mark</td>
+                                            <td><a href="editProduct.html" class="btn btn-success">แก้ไข</a></td>
+                                            <td><button type="button" class="btn btn-danger">ลบ</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">002</td>
+                                            <td><img src="../images/kl2.png" alt="" style="width: 100px; height: 50px;">
+                                            </td>
+                                            <td>tdornton</td>
+                                            <td>@fat</td>
+                                            <td>Mark</td>
+                                            <td><a href="editProduct.html" class="btn btn-success">แก้ไข</a></td>
+                                            <td><button type="button" class="btn btn-danger">ลบ</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">003</td>
+                                            <td><img src="../images/kl3.png" alt="" style="width: 100px; height: 50px;">
+                                            </td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                            <td>Mark</td>
+                                            <td><a href="editProduct.html" class="btn btn-success">แก้ไข</a></td>
+                                            <td><button type="button" class="btn btn-danger">ลบ</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane" id="tabs-2" role="tabpanel">
+                                <div class="container">
+                                    <div class="top-nav mb-4" style=" height: 100px;">
+                                        <img src="../images/LOGO_MATCHMINTON.png" alt=""
+                                            style="width: 35%; margin:0 auto; display: block;">
+                                    </div>
+                                    <div class="saleform">
+                                        <form method='post' enctype="multipart/form-data">
+                                            <div class="form-group row">
+                                                <label for="name"
+                                                    class="col-md-6 col-form-label">ชื่อสินค้าที่คุณต้องการขาย</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" id="product_name"
+                                                        placeholder="ชื่อสินค้า เช่น Astrox 99">
+                                                    <p style="color: #707070;">ไม่ควรใส่อักชระพิเศษ เช่น ! * # > }</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+
+                                                <label for="type"
+                                                    class="col-md-6 col-form-label">เลือกหมวดหมู่สินค้า</label>
+                                                <div class="col-md-6">
+                                                    <select class="custom-select" id="type" onchange="changeType(this)">
+                                                        <option selected disabled="true">เลือกหมวดหมู่</option>
+                                                        <option value="1">ไม้แบดมินตัน</option>
+                                                        <option value="2">รองเท้า</option>
+                                                        <option value="3">เสื้อกีฬา</option>
+                                                        <option value="4">กางเกงกีฬา</option>
+                                                        <option value="5">กระเป๋า</option>
+                                                        <option value="6">เอ็นแบดมินตัน</option>
+                                                        <option value="7">กริ๊ปพันด้าม</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="brand_id"
+                                                    class="col-md-6 col-form-label">แบรนด์/ยี่ห้อ</label>
+                                                <div class="col-md-6">
+                                                    <select class="custom-select" id="brand_id">
+                                                        <option selected>เลือกแบรนด์/ยี่ห้อ</option>
+                                                        <option value="1">Yonex</option>
+                                                        <option value="2">Lining</option>
+                                                        <option value="3">Victor</option>
+                                                        <option value="4">Apacs</option>
+                                                        <option value="5">Kumpoo</option>
+                                                        <option value="6">Gosen</option>
+                                                        <option value="7">Wilson</option>
+                                                        <option value="8">Protech</option>
+                                                        <option value="9">Adidas</option>
+                                                        <option value="10">Mizuno</option>
+                                                        <option value="11">อื่นๆ</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="files" class="col-md-6 col-form-label">รูปสินค้า</label>
+                                                <div class="col-md-6">
+                                                    <div class="wrapper" style="height: 150px;">
+                                                        <div class="drop">
+                                                            <div class="cont">
+                                                                <i class="fas fa-file-image py-5"></i>
+                                                            </div>
+                                                            <output id="list"></output><input id="files" name="files[]"
+                                                                multiple="true" name="files[]" type="file" />
+                                                        </div>
+                                                    </div>
+                                                    <!-- <p>ใส่รูปได้สูงสุด 6 รูป</p> -->
+
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="price" class="col-md-6 col-form-label">ระบุราคา</label>
+                                                <div class="col-md-6">
+                                                    <input type="number" class="form-control" id="price"
+                                                        placeholder="ราคา เช่น 9999">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="quantity"
+                                                    class="col-md-6 col-form-label">จำนวนสินค้าที่มี</label>
+                                                <div class="col-md-6">
+                                                    <input type="number" class="form-control" id="quantity"
+                                                        placeholder="จำนวน เช่น 10,100">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="detail"
+                                                    class="col-md-6 col-form-label">รายละเอียดสินค้า</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" id="detail"
+                                                        placeholder="เช่น สภาพสินค้า สี อายุการใช้งาน ระยะประกัน">
+                                                </div>
+                                            </div>
+                                            <div id="racket" class="d-none">
+                                                <div class="form-group row">
+                                                    <label for="flex" class="col-md-6 col-form-label">Flex</label>
+                                                    <div class="col-md-6">
+                                                        <select class="custom-select" id="flex">
+                                                            <option selected>เลือกความอ่อนของก้าน</option>
+                                                            <option value="1">Stiff</option>
+                                                            <option value="2">Medium</option>
+                                                            <option value="3">Flexible</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="balance" class="col-md-6 col-form-label">Balance</label>
+                                                    <div class="col-md-6">
+                                                        <select class="custom-select" id="balance">
+                                                            <option selected>เลือกความสมดุลของไม้</option>
+                                                            <option value="1">Head Heavy</option>
+                                                            <option value="2">Even Balance</option>
+                                                            <option value="3">Head Light</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="weight" class="col-md-6 col-form-label">Weight</label>
+                                                    <div class="col-md-3">
+                                                        <label>Min</label>
+                                                        <input type="number " class="form-control " id="weight_min"
+                                                            placeholder="min" value="70">
+                                                    </div>
+                                                    <div class="col-md-3 ">
+                                                        <label>Max</label>
+                                                        <input type="number " class="form-control " id="weight_max"
+                                                            placeholder="max" value="90">
+                                                    </div>
+
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="grip_size" class="col-md-6 col-form-label">Grip
+                                                        Size</label>
+                                                    <div class="col-md-6">
+                                                        <select class="custom-select" id="grip_size">
+                                                            <option selected> เลือกขนาดด้ามจับ</option>
+                                                            <option value="1">G3 (3.75 inches)</option>
+                                                            <option value="2">G4 (3.50 inches)</option>
+                                                            <option value="3">G5 (3.25 inches)</option>
+                                                            <option value="4">G6 (3.00 inches)</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="level" class="col-md-6 col-form-label">Level</label>
+                                                    <div class="col-md-6">
+                                                        <select class="custom-select" id="level">
+                                                            <option selected>เลือกความเหมาะสมกับผู้เล่น</option>
+                                                            <option value="1">Beginner to Intermediate</option>
+                                                            <option value="2">Intermediate to Advanced</option>
+                                                            <option value="3">Advanced/Professional</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="tension" class="col-md-6 col-form-label">Max
+                                                        Tension</label>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group row">
+                                                            <label for="tension"
+                                                                class="col-md-6 col-form-label">ความตึงของเอ็นที่รองรับ
+                                                                &nbsp; ≤ </label>
+                                                            <div class="col-md-4">
+                                                                <input type="email" class="form-control" id="tension">
+                                                            </div>
+                                                            <label for="tension" class="col-sm-2 col-form-label">
+                                                                Ibs</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ok py-5" style="text-align: center; ">
+                                                <button type="button" onclick="create(this);"
+                                                    class="btn btn-success">Save</button>&nbsp;&nbsp;
+                                                <button type="reset" class="btn btn-danger">Clear Data</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-member" role="tabpanel" aria-labelledby="v-pills-member-tab">
+                        <div class="row my-2">
+                            <h4 class="col-md-9 float-left">MEMBER</h4>
+                            <div class="input-group mb-3 float-right col">
+                                <input type="text" class="form-control" placeholder="search"
+                                    aria-describedby="button-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button"
+                                        id="button-addon2">Search</button>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table text-center">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Address</th>
+                                    <th>Last Ordered</th>
+                                    <th>Mobile</th>
+                                    <th>Change</th>
+                                </tr>
+                            </thead>
+                            <tbody id="member_table">
+
+                                <tr>
+                                    <th scope="row">0002</th>
+                                    <td><img src="../images/profile5.png" alt="" class="mr-3"
+                                            style="width: 50px; height: 50px;">Pena Valdez</td>
+                                    <td>11/11 ซ. ยอนดู ....</td>
+                                    <td>07/04/2017</td>
+                                    <td>01828112233</td>
+                                    <td>***</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">0003</th>
+                                    <td><img src="../images/profile5.png" alt="" class="mr-3"
+                                            style="width: 50px; height: 50px;">Pena Valdez</td>
+                                    <td>11/11 ซ. ยอนดู ....</td>
+                                    <td>07/04/2017</td>
+                                    <td>01828112233</td>
+                                    <td>***</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
+                        aria-labelledby="v-pills-settings-tab">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Theme ID</th>
+                                    <th>Content</th>
+                                    <th>Status Theme</th>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Time</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">0001</th>
+                                    <td>Lorem ipsum</td>
+                                    <td>ผ่านตรวจสอบ</td>
+                                    <td>0001</td>
+                                    <td><img src="../images/profile5.png" alt="" class="mr-3"
+                                            style="width: 50px; height: 50px;">Pena Valdez</td>
+                                    <td>07/04/2017</td>
+                                    <td><button type="button" class="btn btn-success" data-toggle="modal"
+                                            data-target="#seeReport">ดู</button></td>
+                                    <td><button type="button" class="btn btn-danger">ลบ</button></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">0002</th>
+                                    <td>Lorem ipsum</td>
+                                    <td>ผ่านตรวจสอบ</td>
+                                    <td>0001</td>
+                                    <td><img src="../images/profile5.png" alt="" class="mr-3"
+                                            style="width: 50px; height: 50px;">Pena Valdez</td>
+                                    <td>07/04/2017</td>
+                                    <td><button type="button" class="btn btn-success" data-toggle="modal"
+                                            data-target="#seeReport">ดู</button></td>
+                                    <td><button type="button" class="btn btn-danger">ลบ</button></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">003</th>
+                                    <td>Lorem ipsum</td>
+                                    <td>ผ่านตรวจสอบ</td>
+                                    <td>0001</td>
+                                    <td><img src="../images/profile5.png" alt="" class="mr-3"
+                                            style="width: 50px; height: 50px;">Pena Valdez</td>
+                                    <td>07/04/2017</td>
+                                    <td><button type="button" class="btn btn-success" data-toggle="modal"
+                                            data-target="#seeReport">ดู</button></td>
+                                    <td><button type="button" class="btn btn-danger">ลบ</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- Modal -->
+                        <div class="modal fade" id="seeReport" tabindex="-1" aria-labelledby="seeReportLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-body p-4">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <div class="my-3 ">
+                                            <h4 class="text-center">Theme Report</h4>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <p class=" m-0">Theme ID</p>
+                                                    <p class=" m-0">ID</p>
+                                                    <p class=" m-0">Name</p>
+                                                    <p class=" m-0">Mobile</p>
+                                                </div>
+                                                <div class="col">
+                                                    <p class=" m-0">000001</p>
+                                                    <p class=" m-0">000001</p>
+                                                    <p class=" m-0">Grant Marshall</p>
+                                                    <p class=" m-0">01718332233</p>
+                                                </div>
+                                            </div>
+
+                                            <p>Report Data</p>
+                                            <hr>
+                                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                                eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+                                                voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+                                                Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+                                                sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                                                diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                                                aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
+                                                dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
+                                                est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+                                                sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <input type="email" class="form-control" id="message"
+                                                    placeholder="ข้อความเตือน">
+                                            </div>
+                                            <div class="col">
+
+                                                <button type="button" class="btn btn-success mr-2">เสร็จสิ้น</button>
+                                                <button type="button" class="btn btn-danger mr-2"
+                                                    data-dismiss="modal">ยกเลิก</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+
+    <script>
+        var ctx = $('#chart2');
+        new Chart(ctx, {
+            type: 'bar',
+            responsive: true,
+            data: {
+                labels: [1, 2, 3, 4, 5, 6, 7],
+                datasets: [{
+                    fill: false,
+                    label: '',
+                    data: [80, 40, 43, 45, 44, 39, 45]
+                }]
+            },
+        });
+
+        $().ready(() => {
+            $.ajax({
+                method: "POST",
+                url: "../service/admin_order.php",
+                data: {
+                    action: 'show_admin_order',
+                },
+            }).done(function (msg) {
+                msg = JSON.parse(msg)
+                if (msg.code === 200) {
+                    var res = msg.result;
+                    for (i = 0; i < res.product.length; i++) {
+                        let image = res.product_images.find((item) => res.product[i].product_id == item.fk_product_id);
+                        $('#result').append(Card(res.product[i], image));
+                    };
+                }
+            });
+            $.ajax({
+                method: "POST",
+                url: "../service/admin_order.php",
+                data: {
+                    action: 'show_member',
+                },
+            }).done((msg) => {
+                msg = JSON.parse(msg)
+                if (msg.code === 200) {
+                    console.log(msg.result)
+                    $('#member_table').empty();
+                    msg.result.map((member) => {
+
+                        $('#member_table').append(memberCard(member));
+
+                    })
+                }
+            })
+        })
+
+        memberCard = (member) => {
+            return `<tr>
+                <th scope="row">${member.user_id}</th>
+                <td><img src="../images/profile5.png" alt="" class="mr-3" style="width: 50px; height: 50px;">${member.name} &nbsp; ${member.surname}</td>
+                <td></td>
+                <td>${member.create_at}</td>
+                <td>${member.phone}</td>
+                <td>***</td>
+            </tr>`
+        }
+
+        Card = (item, image) => {
+            console.log(item, image)
+            var img = image ? 'service/' + image.path : 'https://via.placeholder.com/150';
+            return `
+                <tr>
+                    <td class="text-center">${item.order_id}</td>
+                    <td><img src="${img}" alt="" width="100">${item.product_name}</td>
+                    <td>${item.created_at}</td>
+                    <td class="text-center">${item.price}</td>
+                    <td class="text-center">${item.payment_status == 1 ? 'ชำระเงินแล้ว' : 'ยัง'}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary">Order Details</button>
+                        <button type="button" class="btn btn-danger">ยกเลิก</button>
+                    </td>
+                </tr>
+            `;
+        };
+    </script>
+    <script>
+        var drop = $("input");
+        drop.on('dragenter', function (e) {
+            $(".drop").css({
+                "border": "4px dashed #09f",
+                "background": "rgba(0, 153, 255, .05)"
+            });
+            $(".cont").css({
+                "color": "#09f"
+            });
+        }).on('dragleave dragend mouseout drop', function (e) {
+            $(".drop").css({
+                "border": "3px dashed #DADFE3",
+                "background": "transparent"
+            });
+            $(".cont").css({
+                "color": "#8E99A5"
+            });
+        });
+
+
+
+        function handleFileSelect(evt) {
+            var files = evt.target.files; // FileList object
+
+            // Loop through the FileList and render image files as thumbnails.
+            for (var i = 0, f; f = files[i]; i++) {
+
+                // Only process image files.
+                if (!f.type.match('image.*')) {
+                    continue;
+                }
+
+                var reader = new FileReader();
+
+                // Closure to capture the file information.
+                reader.onload = (function (theFile) {
+                    return function (e) {
+                        // Render thumbnail.
+                        var span = document.createElement('span');
+                        span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                            '" title="', escape(theFile.name), '"/>'
+                        ].join('');
+                        document.getElementById('list').insertBefore(span, null);
+                    };
+                })(f);
+
+                // Read in the image file as a data URL.
+                reader.readAsDataURL(f);
+            }
+        }
+
+        $('#files').change(handleFileSelect);
+
+        const changeType = (e) => {
+            if ($('#type option:selected').val() == 1) {
+                $('#racket').removeClass('d-none')
+            } else {
+                $('#racket').addClass('d-none')
+            }
+        }
+
+        const create = (e) => {
+            e.disabled = true;
+            confirm("Press a button!");
+
+            var form_data = new FormData();
+            var totalfiles = document.getElementById('files').files.length;
+            for (var index = 0; index < totalfiles; index++) {
+                form_data.append("files[]", document.getElementById('files').files[index]);
+            }
+            form_data.append('action', 'create');
+            form_data.append('product_name', $('#product_name').val());
+            form_data.append('type', $('#type option:selected').val());
+            form_data.append('price', $('#price').val());
+            form_data.append('description', $('#detail').val());
+            form_data.append('quantity', $('#quantity').val());
+            form_data.append('brand_id', $('#brand_id option:selected').val());
+
+
+            if ($('#type option:selected').val() == 1) {
+                form_data.append('racket', 1);
+                form_data.append('grip_size', $('#grip_size option:selected').val());
+                form_data.append('balance', $('#balance option:selected').val());
+                form_data.append('tension', $('#tension').val());
+                form_data.append('weight_min', $('#weight_min').val());
+                form_data.append('weight_max', $('#weight_max').val());
+                form_data.append('level', $('#level option:selected').val());
+                form_data.append('flex', $('#flex option:selected').val());
+            }
+
+            $.ajax({
+                method: "POST",
+                url: "../service/product.php",
+                data: form_data,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+            }).done(function (msg) {
+                console.log(msg)
+                msg = JSON.parse(msg)
+                if (msg.code === 200) {
+                    alert("บันทึกข้อมูล สำเร็จ");
+
+                    // window.location.href = "login.html";
+                }
+            });
+            e.disabled = false;
+        }
+    </script>
+</body>
+
+</html>
